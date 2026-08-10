@@ -45,6 +45,8 @@ NEXT_PUBLIC_GA_ID=...
 cd /var/www/zumbido-lps
 npm ci
 npm run build
+cp -r public .next/standalone/public
+cp -r .next/static .next/standalone/.next/static
 pm2 start ecosystem.config.js
 pm2 save
 pm2 startup   # siga a instrução impressa pra sobreviver a reboot
@@ -69,6 +71,8 @@ cd /var/www/zumbido-lps
 git pull   # ou rsync novamente
 npm ci
 npm run build
+cp -r public .next/standalone/public
+cp -r .next/static .next/standalone/.next/static
 pm2 reload zumbido-lps
 ```
 
