@@ -7,7 +7,6 @@ import { ProgressBar } from "@/components/campaign/quiz/progress-bar";
 import { ChoiceScreen } from "@/components/campaign/quiz/choice-screen";
 import { ContactFormScreen, type ContactFormValues } from "@/components/campaign/quiz/contact-form-screen";
 import { ResultScreen } from "@/components/campaign/quiz/result-screen";
-import { campaignConfig } from "../config";
 import { quizContent } from "../content";
 
 type Step =
@@ -16,7 +15,11 @@ type Step =
   | { kind: "contact" }
   | { kind: "result" };
 
-export function QuizFlow() {
+export interface QuizFlowProps {
+  quizResultCtaLink: string;
+}
+
+export function QuizFlow({ quizResultCtaLink }: QuizFlowProps) {
   const [step, setStep] = useState<Step>({ kind: "cover" });
   const [answers, setAnswers] = useState<number[]>([]);
   const [contact, setContact] = useState<ContactFormValues | null>(null);
@@ -119,7 +122,7 @@ export function QuizFlow() {
           title={result.title.replace("{nome}", firstName)}
           body={result.body}
           ctaLabel={quizContent.resultCtaLabel}
-          ctaHref={campaignConfig.quizResultCtaLink}
+          ctaHref={quizResultCtaLink}
         />
       </div>
     </div>
