@@ -25,6 +25,8 @@ import {
   ctaFinalContent,
 } from "../content";
 
+export const dynamic = "force-dynamic";
+
 export default function VendasPage() {
   const currentLote = getCurrentLote(lotes, new Date());
 
