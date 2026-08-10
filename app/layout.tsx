@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { TrackingScripts } from "@/components/tracking-scripts";
 import "./globals.css";
 
 const inter = Inter({
@@ -18,7 +19,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className={inter.variable}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <TrackingScripts />
+        {children}
+      </body>
     </html>
   );
 }
