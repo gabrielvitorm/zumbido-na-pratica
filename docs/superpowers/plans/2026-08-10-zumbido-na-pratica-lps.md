@@ -17,7 +17,7 @@
 - All external links (checkout, WhatsApp group, webhook, pixel IDs) come from environment variables with a visible fallback placeholder — never a hard failure when unset.
 - Sales page dobra order is fixed per `pagina-vendas.md` (14 dobras) — do not reorder.
 - Thank-you page dobra order is fixed per `pagina-obrigado.md` (5 dobras, share section optional/flagged).
-- Automated tests (Vitest) are written only for pure logic in `/lib` (`campaign-phase.ts`, `quiz-scoring.ts`, `tracking.ts` config resolution). All UI/page work is verified manually in the browser via `npm run dev` — this is a deliberate scope decision from the spec, not an omission.
+- Automated tests (Vitest) are written only for pure/server logic: `/lib` (`campaign-phase.ts`, `quiz-scoring.ts`, `tracking.ts` config resolution) and the `/api/lead` route handler (Task 16 — validation and webhook-forwarding behavior, no UI involved). All UI/page work is verified manually in the browser via `npm run dev` — this is a deliberate scope decision from the spec, not an omission.
 - Deploy target: Hostgator VPS, fresh install, via Node LTS + PM2 + Nginx + Certbot (no Docker).
 - Copy text must be reproduced verbatim from `pagina-vendas.md`, `pagina-obrigado.md`, `pagina-captacao-quiz.md` — these are approved, do not paraphrase.
 
