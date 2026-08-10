@@ -2732,10 +2732,14 @@ NEXT_PUBLIC_GA_ID=...
 cd /var/www/zumbido-lps
 npm ci
 npm run build
+cp -r public .next/standalone/public
+cp -r .next/static .next/standalone/.next/static
 pm2 start ecosystem.config.js
 pm2 save
 pm2 startup   # siga a instrução impressa pra sobreviver a reboot
 ```
+
+`output: "standalone"` não inclui `public/` nem `.next/static/` no bundle gerado — sem esses dois `cp`, o servidor sobe normalmente mas retorna 404 em todo CSS/JS/imagem.
 
 ## 5. Nginx + SSL
 
@@ -2756,6 +2760,8 @@ cd /var/www/zumbido-lps
 git pull   # ou rsync novamente
 npm ci
 npm run build
+cp -r public .next/standalone/public
+cp -r .next/static .next/standalone/.next/static
 pm2 reload zumbido-lps
 ```
 
