@@ -35,6 +35,7 @@ Na VPS, dentro de `/var/www/zumbido-lps`, crie `.env.production` com os valores 
 CHECKOUT_LINK=...
 WHATSAPP_GROUP_LINK=...
 LEAD_WEBHOOK_URL=...
+UPSELL_CHECKOUT_LINK=...
 NEXT_PUBLIC_META_PIXEL_ID=...
 NEXT_PUBLIC_GA_ID=...
 ```
@@ -47,6 +48,7 @@ npm ci
 npm run build
 cp -r public .next/standalone/public
 cp -r .next/static .next/standalone/.next/static
+cp .env.production .next/standalone/.env.production
 pm2 start ecosystem.config.js
 pm2 save
 pm2 startup   # siga a instrução impressa pra sobreviver a reboot
@@ -73,6 +75,7 @@ npm ci
 npm run build
 cp -r public .next/standalone/public
 cp -r .next/static .next/standalone/.next/static
+cp .env.production .next/standalone/.env.production
 pm2 reload zumbido-lps
 ```
 
