@@ -12,6 +12,9 @@ export default async function ObrigadoPage({
 }) {
   const { nome } = await searchParams;
   const firstName = nome ?? "";
+  const greeting = firstName
+    ? obrigadoContent.confirmation.body.replace("{nome}", firstName)
+    : obrigadoContent.confirmation.body.replace(", {nome}!", "!");
 
   return (
     <>
@@ -22,7 +25,7 @@ export default async function ObrigadoPage({
         <CheckCircle className="mx-auto mb-4 h-14 w-14 text-brand-success" />
         <h1 className="text-2xl font-bold text-brand-primary sm:text-3xl">{obrigadoContent.confirmation.title}</h1>
         <p className="mt-4 whitespace-pre-line text-brand-text/80">
-          {obrigadoContent.confirmation.body.replace("{nome}", firstName || "!")}
+          {greeting}
         </p>
       </section>
 
@@ -58,7 +61,11 @@ export default async function ObrigadoPage({
           <p className="mt-4 text-3xl font-bold text-brand-primary">{obrigadoContent.upsell.price}</p>
           <p className="text-sm text-brand-text/60">{obrigadoContent.upsell.priceNote}</p>
           <div className="mt-6 flex flex-col items-center gap-3">
-            <Button>{obrigadoContent.upsell.acceptLabel}</Button>
+            <CtaLink href={campaignConfig.upsellCheckoutLink} trackAs="InitiateCheckout">
+              {obrigadoContent.upsell.acceptLabel}
+            </CtaLink>
+            {/* href="#" is intentional: per the source copy, the decline link's job is just
+                to be visibly present as a friction-free "no thanks", not to navigate anywhere. */}
             <a href="#" className="text-sm text-brand-text/60 underline">
               {obrigadoContent.upsell.declineLabel}
             </a>
@@ -73,6 +80,8 @@ export default async function ObrigadoPage({
           <p className="mt-3 rounded-xl bg-brand-primary/5 p-4 text-sm text-brand-text/70">
             {obrigadoContent.share.suggestedText}
           </p>
+          {/* No onClick: Stories sharing isn't wired to any real share API in this scope.
+              This is a visual-only element for now. */}
           <Button variant="secondary" className="mt-4">
             {obrigadoContent.share.ctaLabel}
           </Button>

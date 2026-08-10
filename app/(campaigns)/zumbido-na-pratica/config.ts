@@ -4,6 +4,7 @@ export interface CampaignConfig {
   checkoutLink: string;
   whatsappGroupLink: string;
   quizResultCtaLink: string;
+  upsellCheckoutLink: string;
   showShareSection: boolean;
 }
 
@@ -14,6 +15,7 @@ export const campaignConfig: CampaignConfig = {
   // aula aberta; a partir de 20/08 troque manualmente para campaignConfig.checkoutLink
   // ou para a URL da página de vendas publicada.
   quizResultCtaLink: process.env.WHATSAPP_GROUP_LINK || "#whatsapp-pendente",
+  upsellCheckoutLink: process.env.UPSELL_CHECKOUT_LINK || "#checkout-pendente",
   showShareSection: true,
 };
 
@@ -25,8 +27,8 @@ export const lotes: LotePhase[] = [
     label: "Lote 1",
     price: "R$ 3.200",
     installment: "12x de R$ 291",
-    startDate: "2026-08-10",
-    endDate: "2026-08-14",
+    startDate: "2026-08-10T00:00:00-03:00",
+    endDate: "2026-08-14T00:00:00-03:00",
     barText: "🟡 Lote de abertura: R$ 3.200 (12x de R$ 291) — vale até quinta, 13/08",
     barVariant: "default",
   },
@@ -35,8 +37,8 @@ export const lotes: LotePhase[] = [
     label: "Lote 2",
     price: "R$ 3.500",
     installment: "12x de R$ 318",
-    startDate: "2026-08-14",
-    endDate: "2026-08-21",
+    startDate: "2026-08-14T00:00:00-03:00",
+    endDate: "2026-08-21T00:00:00-03:00",
     barText: "Vagas abertas — R$ 3.500 (12x de R$ 318)",
     barVariant: "default",
   },
@@ -45,8 +47,8 @@ export const lotes: LotePhase[] = [
     label: "Últimas 96h",
     price: "R$ 3.500",
     installment: "12x de R$ 318",
-    startDate: "2026-08-21",
-    endDate: "2026-08-25",
+    startDate: "2026-08-21T00:00:00-03:00",
+    endDate: "2026-08-25T00:00:00-03:00",
     barText: "🔴 Últimas horas de inscrição — fecha 24/08 às 23h59",
     barVariant: "urgent",
   },
