@@ -1,11 +1,14 @@
 export interface CardProps {
   className?: string;
+  elevated?: boolean;
   children: React.ReactNode;
 }
 
-export function Card({ className = "", children }: CardProps) {
+export function Card({ className = "", elevated = false, children }: CardProps) {
   return (
-    <div className={`rounded-xl bg-white shadow-sm shadow-black/5 p-6 ${className}`}>
+    <div
+      className={`rounded-xl bg-white p-6 ${elevated ? "shadow-md shadow-black/10" : ""} ${className}`}
+    >
       {children}
     </div>
   );

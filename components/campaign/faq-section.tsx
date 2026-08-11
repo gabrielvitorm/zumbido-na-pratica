@@ -17,9 +17,11 @@ export function FaqSection({ items }: FaqSectionProps) {
   }));
 
   return (
-    <section className="mx-auto max-w-2xl px-4 py-12">
-      <h2 className="mb-6 text-center text-2xl font-bold text-brand-primary">Perguntas frequentes</h2>
-      <Accordion items={accordionItems} />
+    <section className="bg-white px-4 py-12">
+      <div className="mx-auto max-w-2xl">
+        <h2 className="mb-6 text-center font-display text-2xl font-semibold text-ink">Perguntas frequentes</h2>
+        <Accordion items={accordionItems} activeBorderClassName="border-l-coral" />
+      </div>
     </section>
   );
 }

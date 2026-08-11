@@ -7,10 +7,12 @@ export interface GuaranteeBlockProps {
 
 export function GuaranteeBlock({ title, description }: GuaranteeBlockProps) {
   return (
-    <section className="mx-auto flex max-w-2xl flex-col items-center gap-3 px-4 py-12 text-center">
-      <ShieldCheck className="h-10 w-10 text-brand-success" />
-      <h2 className="text-xl font-bold text-brand-primary">{title}</h2>
-      <p className="text-brand-text/80">{description}</p>
+    <section className="bg-cream px-4 py-12">
+      <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 text-center">
+        <ShieldCheck className="h-10 w-10 text-success" />
+        <h2 className="font-display text-xl font-semibold text-ink">{title}</h2>
+        <p className="text-text-primary/80">{description}</p>
+      </div>
     </section>
   );
 }

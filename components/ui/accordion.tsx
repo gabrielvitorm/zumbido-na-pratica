@@ -12,9 +12,10 @@ export interface AccordionItem {
 export interface AccordionProps {
   items: AccordionItem[];
   defaultOpenId?: string;
+  activeBorderClassName?: string;
 }
 
-export function Accordion({ items, defaultOpenId }: AccordionProps) {
+export function Accordion({ items, defaultOpenId, activeBorderClassName = "border-l-brand-accent" }: AccordionProps) {
   const [openId, setOpenId] = useState<string | null>(defaultOpenId ?? null);
 
   return (
@@ -22,7 +23,10 @@ export function Accordion({ items, defaultOpenId }: AccordionProps) {
       {items.map((item) => {
         const isOpen = openId === item.id;
         return (
-          <div key={item.id}>
+          <div
+            key={item.id}
+            className={`border-l-4 ${isOpen ? activeBorderClassName : "border-l-transparent"}`}
+          >
             <button
               type="button"
               onClick={() => setOpenId(isOpen ? null : item.id)}
