@@ -103,6 +103,8 @@ git commit -m "feat: add vendas page redesign color/font/radius tokens"
   - `StickyBar` gains `backgroundClassName?: string` (default: today's `bg-brand-primary`/`bg-brand-alert` variant logic, unchanged) and `countdownClassName?: string` (default `"font-mono"`, unchanged) — same opt-in-override pattern as `Accordion`, so other campaigns keep today's look by default while this page overrides both.
 - Consumed by: Task 7 (page assembly uses `<Card elevated>` for the price card and plain `<Card>` for the offer list; `FaqSection` passes `activeBorderClassName="border-l-coral"` to `Accordion`; `<StickyBar backgroundClassName="bg-ink" countdownClassName="font-mono text-coral">`).
 
+**Cross-page impact warning:** `Card` is also used by `app/(campaigns)/zumbido-na-pratica/obrigado/page.tsx` (2 call sites, outside this plan's scope) — flipping its default from always-shadowed to opt-in-only would silently change that page's appearance, violating this plan's own Global Constraint that other pages "must render unchanged." When implementing Step 1, also grep for every existing `<Card` usage outside `vendas/` and, for any found, add the literal classes `shadow-sm shadow-black/5` directly to that call site's `className` (not the new `elevated` prop, which now renders a different, heavier shadow reserved for Task 7's price card) — this preserves that page's exact prior appearance.
+
 - [ ] **Step 1: Update `components/ui/card.tsx`**
 
 ```tsx
