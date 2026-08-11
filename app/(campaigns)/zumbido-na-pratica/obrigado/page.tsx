@@ -31,7 +31,7 @@ export default async function ObrigadoPage({
 
       {/* 2. Próximo passo */}
       <section className="mx-auto max-w-xl px-4 py-12 text-center">
-        <Card>
+        <Card className="shadow-sm shadow-black/5">
           <h2 className="text-xl font-bold text-brand-primary">{obrigadoContent.nextStep.title}</h2>
           <p className="mt-2 text-brand-text/80">{obrigadoContent.nextStep.body}</p>
           <CtaLink href={campaignConfig.whatsappGroupLink} className="mt-6 inline-flex">
@@ -55,7 +55,7 @@ export default async function ObrigadoPage({
 
       {/* 4. Upsell */}
       <section className="mx-auto max-w-xl px-4 py-12">
-        <Card className="border-2 border-brand-accent bg-brand-accent/5 text-center">
+        <Card className="border-2 border-brand-accent bg-brand-accent/5 text-center shadow-sm shadow-black/5">
           <h2 className="text-xl font-bold text-brand-primary">{obrigadoContent.upsell.title}</h2>
           <p className="mt-3 text-brand-text/80">{obrigadoContent.upsell.body}</p>
           <p className="mt-4 text-3xl font-bold text-brand-primary">{obrigadoContent.upsell.price}</p>
