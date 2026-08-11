@@ -40,7 +40,7 @@ export default function VendasPage() {
   const currentLote = getCurrentLote(lotes, new Date());
 
   return (
-    <div className={fraunces.variable}>
+    <div className={`${fraunces.variable} [--font-display:var(--font-fraunces),Georgia,serif]`}>
       <StickyBar
         text={currentLote.barText}
         variant={currentLote.barVariant}
