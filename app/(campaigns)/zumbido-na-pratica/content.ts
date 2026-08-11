@@ -1,4 +1,4 @@
-import type { ModuleItem } from "@/components/campaign/module-accordion";
+import type { ModuleItem } from "@/components/campaign/module-cards";
 import type { FaqItem } from "@/components/campaign/faq-section";
 import type { QuizOption } from "@/components/campaign/quiz/choice-screen";
 
