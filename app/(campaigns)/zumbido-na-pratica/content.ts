@@ -9,6 +9,7 @@ export const heroContent = {
   socialProofLine: "Mais de 65 profissionais da saúde já passaram por essa formação",
   ctaLabel: "Quero minha vaga na Turma 4",
   loteBadge: "Lote 1 até 13/08",
+  videoSrc: undefined as string | undefined,
 };
 
 export const dorContent = {
