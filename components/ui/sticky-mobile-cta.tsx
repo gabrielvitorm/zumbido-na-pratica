@@ -9,6 +9,7 @@ export interface StickyMobileCtaProps {
   ctaHref: string;
   heroSentinelId: string;
   priceSentinelId: string;
+  accentClassName?: string;
 }
 
 export function StickyMobileCta({
@@ -17,6 +18,7 @@ export function StickyMobileCta({
   ctaHref,
   heroSentinelId,
   priceSentinelId,
+  accentClassName,
 }: StickyMobileCtaProps) {
   const [pastHero, setPastHero] = useState(false);
   const [reachedPrice, setReachedPrice] = useState(false);
@@ -54,7 +56,12 @@ export function StickyMobileCta({
     >
       <div className="flex items-center justify-between gap-3">
         <span className="font-display text-lg font-semibold text-ink">{price}</span>
-        <CtaLink href={ctaHref} trackAs="InitiateCheckout" className="flex-1 justify-center py-2.5 text-sm">
+        <CtaLink
+          href={ctaHref}
+          trackAs="InitiateCheckout"
+          className="flex-1 justify-center py-2.5 text-sm"
+          accentClassName={accentClassName}
+        >
           {ctaLabel}
         </CtaLink>
       </div>

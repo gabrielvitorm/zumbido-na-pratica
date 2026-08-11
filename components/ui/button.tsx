@@ -5,11 +5,11 @@ import { trackEvent, type TrackingEventName } from "@/lib/tracking";
 
 type Variant = "primary" | "secondary";
 
-function variantClasses(variant: Variant): string {
+function variantClasses(variant: Variant, accentClassName?: string): string {
   if (variant === "secondary") {
     return "bg-transparent border-2 border-brand-primary text-brand-primary hover:bg-brand-primary/5";
   }
-  return "bg-brand-accent text-white hover:bg-brand-accent/90";
+  return accentClassName ?? "bg-brand-accent text-white hover:bg-brand-accent/90";
 }
 
 const baseClasses =
@@ -17,23 +17,32 @@ const baseClasses =
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
+  accentClassName?: string;
 }
 
-export function Button({ variant = "primary", className = "", ...props }: ButtonProps) {
+export function Button({ variant = "primary", accentClassName, className = "", ...props }: ButtonProps) {
   return (
-    <button className={`${baseClasses} ${variantClasses(variant)} ${className}`} {...props} />
+    <button className={`${baseClasses} ${variantClasses(variant, accentClassName)} ${className}`} {...props} />
   );
 }
 
 export interface CtaLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   variant?: Variant;
   trackAs?: TrackingEventName;
+  accentClassName?: string;
 }
 
-export function CtaLink({ variant = "primary", className = "", trackAs, onClick, ...props }: CtaLinkProps) {
+export function CtaLink({
+  variant = "primary",
+  accentClassName,
+  className = "",
+  trackAs,
+  onClick,
+  ...props
+}: CtaLinkProps) {
   return (
     <a
-      className={`${baseClasses} ${variantClasses(variant)} ${className}`}
+      className={`${baseClasses} ${variantClasses(variant, accentClassName)} ${className}`}
       onClick={(event) => {
         if (trackAs) trackEvent(trackAs);
         onClick?.(event);

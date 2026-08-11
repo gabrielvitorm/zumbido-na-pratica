@@ -63,6 +63,7 @@ export default function VendasPage() {
               ctaHref={campaignConfig.checkoutLink}
               loteBadge={heroContent.loteBadge}
               imageSrc={heroContent.videoSrc}
+              accentClassName="bg-coral text-white hover:bg-coral-dark"
             />
           </div>
 
@@ -190,6 +191,7 @@ export default function VendasPage() {
           ctaLabel="Garantir minha vaga"
           ctaHref={campaignConfig.checkoutLink}
           noteText={currentLote.barText}
+          accentClassName="bg-coral text-white hover:bg-coral-dark"
         />
       </section>
 
@@ -201,7 +203,12 @@ export default function VendasPage() {
       <section className="bg-ink px-4 py-16 text-center text-text-on-ink">
         <h2 className="font-display text-2xl font-semibold sm:text-3xl">{ctaFinalContent.title}</h2>
         <p className="mt-4 text-text-on-ink-secondary">{ctaFinalContent.subtitle}</p>
-        <CtaLink href={campaignConfig.checkoutLink} trackAs="InitiateCheckout" className="mt-8 inline-flex">
+        <CtaLink
+          href={campaignConfig.checkoutLink}
+          trackAs="InitiateCheckout"
+          className="mt-8 inline-flex"
+          accentClassName="bg-coral text-white hover:bg-coral-dark"
+        >
           {ctaFinalContent.ctaLabel}
         </CtaLink>
       </section>
@@ -214,6 +221,7 @@ export default function VendasPage() {
         ctaHref={campaignConfig.checkoutLink}
         heroSentinelId="hero-end-sentinel"
         priceSentinelId="price-sentinel"
+        accentClassName="bg-coral text-white hover:bg-coral-dark"
       />
     </div>
   );

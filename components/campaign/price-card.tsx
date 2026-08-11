@@ -9,6 +9,7 @@ export interface PriceCardProps {
   ctaLabel: string;
   ctaHref: string;
   noteText: string;
+  accentClassName?: string;
 }
 
 export function PriceCard({
@@ -19,6 +20,7 @@ export function PriceCard({
   ctaLabel,
   ctaHref,
   noteText,
+  accentClassName,
 }: PriceCardProps) {
   return (
     <Card elevated className="mx-auto max-w-md text-center">
@@ -30,7 +32,12 @@ export function PriceCard({
         <span className="font-display text-4xl font-bold text-ink">{price}</span>
       </p>
       <p className="mt-1 text-text-secondary">{installment}</p>
-      <CtaLink href={ctaHref} trackAs="InitiateCheckout" className="mt-6 w-full">
+      <CtaLink
+        href={ctaHref}
+        trackAs="InitiateCheckout"
+        className="mt-6 w-full"
+        accentClassName={accentClassName}
+      >
         {ctaLabel}
       </CtaLink>
       <p className="mt-3 text-sm text-text-secondary">{noteText}</p>
