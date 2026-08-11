@@ -206,6 +206,8 @@ export default function VendasPage() {
         </CtaLink>
       </section>
 
+      <div className="h-[72px] lg:hidden" aria-hidden="true" />
+
       <StickyMobileCta
         price={currentLote.price}
         ctaLabel="Garantir vaga"
