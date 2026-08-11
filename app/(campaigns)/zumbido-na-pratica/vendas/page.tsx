@@ -54,16 +54,17 @@ export default function VendasPage() {
       <div className="relative bg-cream">
         <AuditoryPathway />
         <div className="relative z-10">
-          <Hero
-            headline={heroContent.headline}
-            subheadline={heroContent.subheadline}
-            socialProofLine={heroContent.socialProofLine}
-            ctaLabel={heroContent.ctaLabel}
-            ctaHref={campaignConfig.checkoutLink}
-            loteBadge={heroContent.loteBadge}
-            imageSrc={heroContent.videoSrc}
-          />
-          <div id="hero-end-sentinel" aria-hidden="true" />
+          <div id="hero-end-sentinel">
+            <Hero
+              headline={heroContent.headline}
+              subheadline={heroContent.subheadline}
+              socialProofLine={heroContent.socialProofLine}
+              ctaLabel={heroContent.ctaLabel}
+              ctaHref={campaignConfig.checkoutLink}
+              loteBadge={heroContent.loteBadge}
+              imageSrc={heroContent.videoSrc}
+            />
+          </div>
 
           {/* Dor — 3-block structure: isolated opening, left-aligned body, isolated closing */}
           <section className="px-4 py-12">
