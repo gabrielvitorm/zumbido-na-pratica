@@ -13,10 +13,11 @@ function variantClasses(variant: Variant, accentClassName?: string): string {
 }
 
 const baseClasses =
-  "inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold transition-colors disabled:opacity-50 disabled:pointer-events-none";
+  "inline-flex items-center justify-center rounded-xl px-6 py-3 text-lg font-bold transition-colors disabled:opacity-50 disabled:pointer-events-none";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
+  /** Only applies when `variant="primary"`; silently ignored for `variant="secondary"` (see `variantClasses`). */
   accentClassName?: string;
 }
 
@@ -29,6 +30,7 @@ export function Button({ variant = "primary", accentClassName, className = "", .
 export interface CtaLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   variant?: Variant;
   trackAs?: TrackingEventName;
+  /** Only applies when `variant="primary"`; silently ignored for `variant="secondary"` (see `variantClasses`). */
   accentClassName?: string;
 }
 

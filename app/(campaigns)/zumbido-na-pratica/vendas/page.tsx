@@ -50,9 +50,20 @@ export default function VendasPage() {
       />
 
       {/* Reading block: Hero → Dor → Virada → Para quem → Transformação, one shared
-          cream background with the signature line running behind all of it. */}
+          cream background with the signature line running behind all of it.
+          The two coral "key moment" nodes are real HTML elements (not SVG
+          children of AuditoryPathway's distorted viewBox) so they stay
+          perfectly circular at every viewport width — see auditory-pathway.tsx. */}
       <div className="relative bg-cream">
         <AuditoryPathway />
+        <span
+          className="absolute left-1/2 top-[24%] z-[1] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-coral"
+          aria-hidden="true"
+        />
+        <span
+          className="absolute left-1/2 top-[62%] z-[1] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-coral"
+          aria-hidden="true"
+        />
         <div className="relative z-10">
           <div id="hero-end-sentinel">
             <Hero
@@ -156,10 +167,15 @@ export default function VendasPage() {
       {/* Prova social — same ink block, "65+" before the videos */}
       <section className="bg-ink px-4 py-12 text-text-on-ink">
         <p className="mb-2 text-center font-display text-4xl font-bold text-white">65+</p>
-        <h2 className="mb-6 text-center text-2xl font-semibold">{provaSocialContent.headline}</h2>
+        <h2 className="mb-6 text-center font-display text-2xl font-semibold">{provaSocialContent.headline}</h2>
         <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
           {provaSocialContent.videos.map((video, index) => (
-            <VideoEmbed key={index} src={video.src} thumbnailAlt={video.thumbnailAlt} />
+            <VideoEmbed
+              key={index}
+              src={video.src}
+              thumbnailAlt={video.thumbnailAlt}
+              placeholderClassName="bg-ink-light text-text-on-ink-secondary"
+            />
           ))}
         </div>
       </section>
@@ -169,14 +185,17 @@ export default function VendasPage() {
         <Card className="mx-auto max-w-xl">
           <h2 className="mb-4 font-display text-xl font-semibold text-ink">{ofertaContent.title}</h2>
           <ul className="space-y-2">
-            {ofertaContent.items.map((item, index) => (
-              <li key={item} className="flex items-start gap-2 text-text-primary/80">
-                <Check
-                  className={`mt-0.5 h-5 w-5 shrink-0 ${index === 0 ? "text-coral" : "text-success"}`}
-                />
-                <span className={index === 0 ? "font-medium text-text-primary" : ""}>{item}</span>
-              </li>
-            ))}
+            {ofertaContent.items.map((item) => {
+              const isHighlighted = item.includes("Mentoria de Primeiros Pacientes");
+              return (
+                <li key={item} className="flex items-start gap-2 text-text-primary/80">
+                  <Check
+                    className={`mt-0.5 h-5 w-5 shrink-0 ${isHighlighted ? "text-coral" : "text-success"}`}
+                  />
+                  <span className={isHighlighted ? "font-medium text-text-primary" : ""}>{item}</span>
+                </li>
+              );
+            })}
           </ul>
           <p className="mt-4 font-display font-semibold text-ink">{ofertaContent.closingLine}</p>
         </Card>
@@ -212,8 +231,6 @@ export default function VendasPage() {
           {ctaFinalContent.ctaLabel}
         </CtaLink>
       </section>
-
-      <div className="h-[72px] lg:hidden" aria-hidden="true" />
 
       <StickyMobileCta
         price={currentLote.price}

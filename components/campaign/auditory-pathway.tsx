@@ -1,3 +1,12 @@
+// Renders ONLY the decorative path line — no nodes. `preserveAspectRatio="none"`
+// non-uniformly scales x/y to stretch the path to fit any content height, and that
+// scale applies to every child. `vectorEffect="non-scaling-stroke"` only protects
+// the path's stroke width from that scale, NOT circle geometry — so the two coral
+// "key moment" nodes previously drawn here as <circle> children rendered as
+// distorted ellipses (and one was fully hidden behind the opaque Virada card).
+// The nodes now live in `vendas/page.tsx` as real, absolutely-positioned HTML
+// elements sized in px (not SVG viewBox units), siblings of this SVG inside the
+// same `relative` wrapper, so they stay circular at every viewport width.
 export function AuditoryPathway() {
   return (
     <svg
@@ -14,10 +23,6 @@ export function AuditoryPathway() {
         strokeWidth="1.5"
         vectorEffect="non-scaling-stroke"
       />
-      {/* Node: end of hero */}
-      <circle cx="50" cy="260" r="5" fill="var(--color-coral)" />
-      {/* Node: Virada section */}
-      <circle cx="50" cy="520" r="5" fill="var(--color-coral)" />
     </svg>
   );
 }
