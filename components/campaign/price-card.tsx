@@ -11,21 +11,29 @@ export interface PriceCardProps {
   noteText: string;
 }
 
-export function PriceCard({ loteLabel, price, installment, originalPrice, ctaLabel, ctaHref, noteText }: PriceCardProps) {
+export function PriceCard({
+  loteLabel,
+  price,
+  installment,
+  originalPrice,
+  ctaLabel,
+  ctaHref,
+  noteText,
+}: PriceCardProps) {
   return (
-    <Card className="mx-auto max-w-md text-center">
-      <p className="text-sm font-medium text-brand-primary">{loteLabel}</p>
+    <Card elevated className="mx-auto max-w-md text-center">
+      <p className="text-sm font-medium text-ink">{loteLabel}</p>
       <p className="mt-2">
         {originalPrice ? (
-          <span className="mr-2 text-lg text-brand-text/40 line-through">{originalPrice}</span>
+          <span className="mr-2 text-lg text-text-secondary line-through">{originalPrice}</span>
         ) : null}
-        <span className="text-4xl font-bold text-brand-primary">{price}</span>
+        <span className="font-display text-4xl font-bold text-ink">{price}</span>
       </p>
-      <p className="mt-1 text-brand-text/70">{installment}</p>
+      <p className="mt-1 text-text-secondary">{installment}</p>
       <CtaLink href={ctaHref} trackAs="InitiateCheckout" className="mt-6 w-full">
         {ctaLabel}
       </CtaLink>
-      <p className="mt-3 text-sm text-brand-text/60">{noteText}</p>
+      <p className="mt-3 text-sm text-text-secondary">{noteText}</p>
     </Card>
   );
 }
