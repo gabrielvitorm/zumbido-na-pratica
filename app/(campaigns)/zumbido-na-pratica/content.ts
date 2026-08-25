@@ -8,8 +8,7 @@ export const heroContent = {
     "Aprenda o protocolo que eu uso pra tratar zumbido de verdade — Terapia Manual, Laserterapia, Neuromodulação e mais 4 abordagens, direto de quem estuda o cérebro por profissão.",
   socialProofLine: "Mais de 65 profissionais da saúde já passaram por essa formação",
   ctaLabel: "Quero minha vaga na Turma 4",
-  loteBadge: "Lote 1 até 13/08",
-  videoSrc: undefined as string | undefined,
+  loteBadge: "Inscrições até 10/09",
 };
 
 export const dorContent = {
@@ -30,7 +29,6 @@ export const viradaContent = {
     "Quando eu entendi isso, o tratamento mudou. Parei de tentar \"consertar o ouvido\" e passei a modular o sistema inteiro — com terapia manual, laser, neuromodulação e mindfulness, cada um agindo numa parte diferente desse circuito.",
     "É esse protocolo que eu ensino no Zumbido na Prática.",
   ],
-  videoSrc: undefined as string | undefined,
 };
 
 export const paraQuemContent = {
@@ -67,41 +65,55 @@ export const transformacaoContent = {
 export const modulosContent: ModuleItem[] = [
   {
     number: 1,
-    title: "Mindfulness",
-    description:
-      "Técnicas de regulação da atenção que reduzem o incômodo do zumbido mesmo quando o som em si não muda.",
+    title: "Módulo empreendedor + tráfego",
+    description: "Como precificar, montar pacote de sessões e atrair o paciente certo pro seu consultório.",
   },
   {
     number: 2,
-    title: "Terapia Manual",
+    title: "Avaliação",
+    description: "Protocolo completo de avaliação do paciente com zumbido, do zero.",
+  },
+  {
+    number: 3,
+    title: "Laserterapia + Laserpuntura",
+    description: "Protocolo de aplicação, dosagem e frequência, combinando laser com pontos específicos de acupuntura para zumbido.",
+  },
+  {
+    number: 4,
+    title: "Neuromodulação TDCS",
+    description: "Estimulação transcraniana por corrente contínua aplicada ao circuito neural do zumbido.",
+  },
+  {
+    number: 5,
+    title: "Neuromodulação vagal",
+    description: "Estimulação do nervo vago para modular a resposta do sistema nervoso ao zumbido.",
+  },
+  {
+    number: 6,
+    title: "Neuromodulação trigeminal",
+    description: "Estimulação trigeminal como abordagem complementar para casos que não respondem só às técnicas anteriores.",
+  },
+  {
+    number: 7,
+    title: "Terapia de motricidade",
     description:
       "Abordagem manual voltada à musculatura e articulações que influenciam o sistema auditivo — nenhum equipamento necessário.",
   },
   {
-    number: 3,
-    title: "Laserterapia",
-    description: "Protocolo de aplicação, dosagem e frequência para casos indicados.",
+    number: 8,
+    title: "Terapia de processamento cognitivo para zumbido",
+    description: "Técnicas de reestruturação cognitiva para reduzir o incômodo do zumbido.",
   },
   {
-    number: 4,
-    title: "Laserpuntura",
-    description: "Pontos e protocolo específicos para zumbido, combinando laser com abordagem de acupuntura.",
-  },
-  {
-    number: 5,
-    title: "Neuromodulação (TDS e vagal)",
+    number: 9,
+    title: "Mindfulness para zumbido. Como eu faço.",
     description:
-      "Conteúdo novo desta turma. Técnicas de estimulação que atuam diretamente no circuito neural responsável por manter o zumbido.",
+      "Técnicas de regulação da atenção que reduzem o incômodo do zumbido mesmo quando o som em si não muda.",
   },
   {
-    number: 6,
-    title: "Surdez Súbita (nome a confirmar)",
-    description: "Conduta diante de um caso de surdez súbita — o que fazer, quando encaminhar, o que não pode esperar.",
-  },
-  {
-    number: 7,
-    title: "PAC e Estimulação Trigeminal",
-    description: "Abordagens complementares para casos que não respondem só às técnicas anteriores.",
+    number: 10,
+    title: "Aconselhamento: como eu faço.",
+    description: "Como conduzir a orientação do paciente com zumbido — o que dizer, como dizer, e como isso muda a adesão ao tratamento.",
   },
   {
     number: 0,
@@ -110,31 +122,11 @@ export const modulosContent: ModuleItem[] = [
       "Depois do curso, você traz seus casos reais e eu te ajudo na conduta, por 3 meses. Quem quiser continuar depois, segue por R$ 147/mês — sem cobrança automática, você decide.",
     isBonus: true,
   },
-  {
-    number: 0,
-    title: "Bônus — Módulo Empresarial",
-    description:
-      "Como precificar, montar pacote de sessões e estruturar o atendimento de zumbido como serviço no seu consultório.",
-    isBonus: true,
-  },
-  {
-    number: 0,
-    title: "Bônus — Mini Curso de Tráfego",
-    description: "Como atrair o paciente certo pro seu consultório — de nada adianta o protocolo sem gente pra aplicar nele.",
-    isBonus: true,
-  },
-  {
-    number: 0,
-    title: "Upsell — Módulo de Avaliação (R$ 700)",
-    description:
-      "Protocolo completo de avaliação do paciente com zumbido, do zero. Oferecido no checkout, não incluso no pacote.",
-    isUpsell: true,
-  },
 ];
 
 export const quemEnsinaContent = {
-  name: "[Nome]",
-  bio: "Estudo o cérebro há [X anos], com foco em como o sistema nervoso processa e mantém sintomas como o zumbido. Já formei mais de 65 profissionais da saúde através do Zumbido na Prática, em 3 turmas anteriores.\n\nEsta é a primeira turma depois de um tempo parada — usei essa pausa pra reformular o curso inteiro e trazer o que há de mais atual em neuromodulação para o tratamento do zumbido.",
+  name: "Ana Luiza Caldas",
+  bio: "Estudo o cérebro há 10 anos, com foco em como o sistema nervoso processa e mantém sintomas como o zumbido. Já formei mais de 65 profissionais da saúde através do Zumbido na Prática, em 3 turmas anteriores.\n\nEsta é a primeira turma depois de um tempo parada — usei essa pausa pra reformular o curso inteiro e trazer o que há de mais atual em neuromodulação para o tratamento do zumbido.",
   photoSrc: undefined as string | undefined,
 };
 
@@ -149,27 +141,25 @@ export const provaSocialContent = {
 export const ofertaContent = {
   title: "O que está incluso:",
   items: [
-    "7 módulos completos, 100% ao vivo (R$ 3.500 avulso — não disponível nesta turma)",
+    "10 módulos completos, 100% ao vivo (R$ 5.500 avulso — R$ 550 cada módulo individual)",
     "Gravação de todas as aulas por 12 meses",
     "Mentoria de Primeiros Pacientes — 3 meses inclusos",
-    "Módulo Empresarial — bônus",
-    "Mini Curso de Tráfego — bônus",
     "Acesso ao grupo exclusivo da turma",
   ],
-  closingLine: "Tudo isso por R$ 3.200 no Lote 1 (depois R$ 3.500)",
+  closingLine: "Tudo isso por R$ 2.470",
 };
 
 export const garantiaContent = {
   title: "Garantia de 7 dias após o primeiro encontro",
   description:
-    "Você assiste ao primeiro fim de semana de aula (29 e 30/08) inteiro. Se não for pra você, é só pedir reembolso até 05/09 — sem burocracia.",
+    "Você assiste ao primeiro fim de semana de aula (05 e 06/09) inteiro. Se não for pra você, é só pedir reembolso até 12/09 — sem burocracia.",
 };
 
 export const faqContent: FaqItem[] = [
   {
     question: "O curso é gravado ou ao vivo?",
     answer:
-      "100% ao vivo, nos fins de semana: 29 e 30/08, 12 e 13/09, 26 e 27/09, 03 e 04/10. Toda aula fica gravada e disponível por 12 meses.",
+      "100% ao vivo, nos fins de semana: 05 e 06/09, 12 e 13/09, 19 e 20/09, 26 e 27/09. Toda aula fica gravada e disponível por 12 meses.",
   },
   {
     question: "Preciso ter equipamento de laser?",
@@ -187,7 +177,8 @@ export const faqContent: FaqItem[] = [
   },
   {
     question: "Posso comprar só um módulo?",
-    answer: "Não nesta turma — os módulos saem só no pacote completo, porque o protocolo depende da sequência.",
+    answer:
+      "Sim, os módulos também são vendidos avulsos, a R$ 550 cada. Mas o pacote completo (R$ 2.470) sai mais em conta se você quer o protocolo inteiro.",
   },
   {
     question: "Tem parcelamento?",
@@ -201,7 +192,7 @@ export const faqContent: FaqItem[] = [
 
 export const ctaFinalContent = {
   title: "A Turma 4 do Zumbido na Prática está aberta.",
-  subtitle: "Comece 29 de agosto com o protocolo que muda o que você faz na segunda-feira de manhã.",
+  subtitle: "Comece 05 de setembro com o protocolo que muda o que você faz na segunda-feira de manhã.",
   ctaLabel: "Quero minha vaga",
 };
 
@@ -220,16 +211,33 @@ export const obrigadoContent = {
     items: [
       { label: "Hoje", description: "você recebe o e-mail com acesso à área de membros" },
       { label: "Nos próximos dias", description: "materiais de apoio liberados aos poucos" },
-      { label: "29 e 30/08", description: "primeiro encontro ao vivo — Introdução ao Zumbido + minha aula" },
-      { label: "Encontros seguintes", description: "12 e 13/09, 26 e 27/09, 03 e 04/10" },
+      { label: "05 e 06/09", description: "primeiro encontro ao vivo — Introdução ao Zumbido + minha aula" },
+      { label: "Encontros seguintes", description: "12 e 13/09, 19 e 20/09, 26 e 27/09" },
     ],
   },
-  upsell: {
-    title: "Antes de você sair: um complemento que faz sentido com o que você acabou de garantir",
-    body: "O curso te dá o protocolo de tratamento. O Módulo de Avaliação te dá o protocolo de diagnóstico — como avaliar o paciente com zumbido do zero, antes de decidir qual dos 7 módulos aplicar.",
-    price: "R$ 700",
-    priceNote: "acesso imediato, junto com o resto do curso.",
-    acceptLabel: "Quero adicionar o Módulo de Avaliação",
+  upsells: {
+    title: "Antes de você sair: dois complementos que fazem sentido com o que você acabou de garantir",
+    items: [
+      {
+        name: "Mindfulness",
+        body: "Aprofunde as técnicas de regulação da atenção que reduzem o incômodo do zumbido — mentoria à parte do pacote.",
+        price: "R$ 790",
+        priceValue: 790,
+        priceNote: "acesso imediato.",
+        ctaLabel: "Quero adicionar Mindfulness",
+        ctaHref: "https://pay.kiwify.com.br/jqFkpYE",
+      },
+      {
+        name: "Supervisão (SuperZumbido)",
+        body: "5 reuniões mensais de supervisão pra você tirar dúvidas de casos reais comigo, com frequência fixa.",
+        price: "R$ 790",
+        priceValue: 790,
+        priceNote: "cobrança mensal, cancele quando quiser.",
+        ctaLabel: "Quero entrar na Supervisão",
+        ctaHref: "#checkout-pendente-supervisao",
+      },
+    ],
+    buyBothLabel: "Quero os 2",
     declineLabel: "Não, obrigada, só o combo por enquanto",
   },
   share: {

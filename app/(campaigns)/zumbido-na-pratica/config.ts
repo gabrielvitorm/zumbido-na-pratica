@@ -4,52 +4,31 @@ export interface CampaignConfig {
   checkoutLink: string;
   whatsappGroupLink: string;
   quizResultCtaLink: string;
-  upsellCheckoutLink: string;
   showShareSection: boolean;
+  /** Digits only, no "+" — e.g. "5583996314804". Used to build wa.me links. */
+  salesWhatsappNumber: string;
 }
 
 export const campaignConfig: CampaignConfig = {
   checkoutLink: process.env.CHECKOUT_LINK || "#checkout-pendente",
   whatsappGroupLink: process.env.WHATSAPP_GROUP_LINK || "#whatsapp-pendente",
-  // Regra de negócio (ver pagina-captacao-quiz.md): antes de 20/08 aponta pro grupo da
-  // aula aberta; a partir de 20/08 troque manualmente para campaignConfig.checkoutLink
-  // ou para a URL da página de vendas publicada.
-  quizResultCtaLink: process.env.WHATSAPP_GROUP_LINK || "#whatsapp-pendente",
-  upsellCheckoutLink: process.env.UPSELL_CHECKOUT_LINK || "#checkout-pendente",
+  // Regra de negócio (ver pagina-captacao-quiz.md): antes de 20/08 apontava pro grupo da
+  // aula aberta; já passamos de 20/08, então aponta pro checkout.
+  quizResultCtaLink: process.env.CHECKOUT_LINK || "#checkout-pendente",
   showShareSection: true,
+  salesWhatsappNumber: process.env.SALES_WHATSAPP_NUMBER || "",
 };
 
-// Datas de exemplo herdadas de pagina-vendas.md — confirmar o ano real dos lotes
-// antes de publicar (mantidas aqui como o único lugar que precisa mudar por turma).
+// Turma 4 — valor único, sem lotes. Inscrições até 10/09/2026 23:59.
 export const lotes: LotePhase[] = [
   {
-    id: "lote1",
-    label: "Lote 1",
-    price: "R$ 3.200",
-    installment: "12x de R$ 291",
-    startDate: "2026-08-10T00:00:00-03:00",
-    endDate: "2026-08-14T00:00:00-03:00",
-    barText: "🟡 Lote de abertura: R$ 3.200 (12x de R$ 291) — vale até quinta, 13/08",
+    id: "turma4",
+    label: "Turma 4",
+    price: "R$ 2.470",
+    installment: "12x de R$ 255,46",
+    startDate: "2026-08-01T00:00:00-03:00",
+    endDate: "2026-09-10T23:59:59-03:00",
+    barText: "Turma 4 — R$ 2.470 (12x de R$ 255,46) — inscrições até 10/09",
     barVariant: "default",
-  },
-  {
-    id: "lote2",
-    label: "Lote 2",
-    price: "R$ 3.500",
-    installment: "12x de R$ 318",
-    startDate: "2026-08-14T00:00:00-03:00",
-    endDate: "2026-08-21T00:00:00-03:00",
-    barText: "Vagas abertas — R$ 3.500 (12x de R$ 318)",
-    barVariant: "default",
-  },
-  {
-    id: "final",
-    label: "Últimas 96h",
-    price: "R$ 3.500",
-    installment: "12x de R$ 318",
-    startDate: "2026-08-21T00:00:00-03:00",
-    endDate: "2026-08-25T00:00:00-03:00",
-    barText: "🔴 Últimas horas de inscrição — fecha 24/08 às 23h59",
-    barVariant: "urgent",
   },
 ];

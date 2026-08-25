@@ -4,14 +4,12 @@ import { getCurrentLote } from "@/lib/campaign-phase";
 import { StickyBar } from "@/components/ui/sticky-bar";
 import { CtaLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { VideoEmbed } from "@/components/ui/video-embed";
 import { StickyMobileCta } from "@/components/ui/sticky-mobile-cta";
 import { Hero } from "@/components/campaign/hero";
 import { PriceCard } from "@/components/campaign/price-card";
 import { GuaranteeBlock } from "@/components/campaign/guarantee-block";
 import { FaqSection } from "@/components/campaign/faq-section";
 import { ModuleCards } from "@/components/campaign/module-cards";
-import { AuditoryPathway } from "@/components/campaign/auditory-pathway";
 import { campaignConfig, lotes } from "../config";
 import {
   heroContent,
@@ -21,7 +19,6 @@ import {
   transformacaoContent,
   modulosContent,
   quemEnsinaContent,
-  provaSocialContent,
   ofertaContent,
   garantiaContent,
   faqContent,
@@ -50,20 +47,8 @@ export default function VendasPage() {
       />
 
       {/* Reading block: Hero → Dor → Virada → Para quem → Transformação, one shared
-          cream background with the signature line running behind all of it.
-          The two coral "key moment" nodes are real HTML elements (not SVG
-          children of AuditoryPathway's distorted viewBox) so they stay
-          perfectly circular at every viewport width — see auditory-pathway.tsx. */}
+          cream background. */}
       <div className="relative bg-cream">
-        <AuditoryPathway />
-        <span
-          className="absolute left-1/2 top-[24%] z-[1] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-coral"
-          aria-hidden="true"
-        />
-        <span
-          className="absolute left-1/2 top-[62%] z-[1] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-coral"
-          aria-hidden="true"
-        />
         <div className="relative z-10">
           <div id="hero-end-sentinel">
             <Hero
@@ -73,7 +58,6 @@ export default function VendasPage() {
               ctaLabel={heroContent.ctaLabel}
               ctaHref={campaignConfig.checkoutLink}
               loteBadge={heroContent.loteBadge}
-              imageSrc={heroContent.videoSrc}
               accentClassName="bg-coral text-white hover:bg-coral-dark"
             />
           </div>
@@ -101,8 +85,7 @@ export default function VendasPage() {
               <h2 className="mb-4 text-center font-display text-2xl font-semibold text-ink">
                 {viradaContent.title}
               </h2>
-              <VideoEmbed src={viradaContent.videoSrc} thumbnailAlt="Por que o zumbido não está no ouvido" />
-              <div className="mt-6 space-y-4 text-text-primary/80">
+              <div className="space-y-4 text-text-primary/80">
                 {viradaContent.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -155,7 +138,7 @@ export default function VendasPage() {
         </div>
       </div>
 
-      {/* Módulos — white background, card list, no signature line (see AuditoryPathway's scope note) */}
+      {/* Módulos — white background, card list */}
       <ModuleCards modules={modulosContent} />
 
       {/* Quem ensina — ink, continuous with Prova social below */}
@@ -164,21 +147,7 @@ export default function VendasPage() {
         <p className="mx-auto max-w-2xl whitespace-pre-line text-text-on-ink-secondary">{quemEnsinaContent.bio}</p>
       </section>
 
-      {/* Prova social — same ink block, "65+" before the videos */}
-      <section className="bg-ink px-4 py-12 text-text-on-ink">
-        <p className="mb-2 text-center font-display text-4xl font-bold text-white">65+</p>
-        <h2 className="mb-6 text-center font-display text-2xl font-semibold">{provaSocialContent.headline}</h2>
-        <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
-          {provaSocialContent.videos.map((video, index) => (
-            <VideoEmbed
-              key={index}
-              src={video.src}
-              thumbnailAlt={video.thumbnailAlt}
-              placeholderClassName="bg-ink-light text-text-on-ink-secondary"
-            />
-          ))}
-        </div>
-      </section>
+      {/* Prova social (depoimentos em vídeo) — oculta por hora, ver provaSocialContent em content.ts */}
 
       {/* Oferta e bônus — cream, receipt-style list */}
       <section className="bg-cream px-4 py-12">
@@ -204,7 +173,7 @@ export default function VendasPage() {
       {/* Preço e lotes — white, the one elevated card on the page */}
       <section id="price-sentinel" className="bg-white px-4 py-12">
         <PriceCard
-          loteLabel={`Turma 4 — ${currentLote.label}`}
+          loteLabel={currentLote.label}
           price={currentLote.price}
           installment={currentLote.installment}
           ctaLabel="Garantir minha vaga"
