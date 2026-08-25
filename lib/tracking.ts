@@ -1,4 +1,11 @@
-export type TrackingEventName = "Lead" | "InitiateCheckout" | "CompleteRegistration";
+export type TrackingEventName =
+  | "PageView"
+  | "ViewContent"
+  | "Lead"
+  | "AddToCart"
+  | "InitiateCheckout"
+  | "CompleteRegistration"
+  | "Purchase";
 
 export function resolveTrackingConfig(env: {
   metaPixelId?: string;

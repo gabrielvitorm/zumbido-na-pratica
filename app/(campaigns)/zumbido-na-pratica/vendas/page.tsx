@@ -10,6 +10,7 @@ import { PriceCard } from "@/components/campaign/price-card";
 import { GuaranteeBlock } from "@/components/campaign/guarantee-block";
 import { FaqSection } from "@/components/campaign/faq-section";
 import { ModuleCards } from "@/components/campaign/module-cards";
+import { ViewContentTracking } from "./view-content-tracking";
 import { campaignConfig, lotes } from "../config";
 import {
   heroContent,
@@ -38,6 +39,7 @@ export default function VendasPage() {
 
   return (
     <div className={`${fraunces.variable} [--font-display:var(--font-fraunces),Georgia,serif]`}>
+      <ViewContentTracking />
       <StickyBar
         text={currentLote.barText}
         variant={currentLote.barVariant}

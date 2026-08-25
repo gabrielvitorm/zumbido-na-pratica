@@ -2,8 +2,9 @@
 
 import { useMemo, useState } from "react";
 import { CtaLink } from "@/components/ui/button";
+import { trackEvent } from "@/lib/tracking";
 import { formatPrice, buildWhatsappCartLink } from "@/lib/whatsapp";
-import { cartContent, cartItems } from "./carrinho-content";
+import { cartContent, cartItems, type CartItem } from "./carrinho-content";
 
 export interface CartFlowProps {
   salesWhatsappNumber: string;
@@ -12,13 +13,14 @@ export interface CartFlowProps {
 export function CartFlow({ salesWhatsappNumber }: CartFlowProps) {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
 
-  function toggleItem(id: string) {
+  function toggleItem(item: CartItem) {
     setSelectedIds((current) => {
       const next = new Set(current);
-      if (next.has(id)) {
-        next.delete(id);
+      if (next.has(item.id)) {
+        next.delete(item.id);
       } else {
-        next.add(id);
+        next.add(item.id);
+        trackEvent("AddToCart", { content_name: item.title, value: item.price, currency: "BRL" });
       }
       return next;
     });
@@ -54,7 +56,7 @@ export function CartFlow({ salesWhatsappNumber }: CartFlowProps) {
                 <input
                   type="checkbox"
                   checked={checked}
-                  onChange={() => toggleItem(item.id)}
+                  onChange={() => toggleItem(item)}
                   className="h-5 w-5 shrink-0 accent-coral"
                 />
                 <span className="flex-1 text-text-primary">{item.title}</span>

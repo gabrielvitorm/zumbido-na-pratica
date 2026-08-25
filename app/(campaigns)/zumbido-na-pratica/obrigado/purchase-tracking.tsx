@@ -5,7 +5,7 @@ import { trackEvent } from "@/lib/tracking";
 
 export function PurchaseTracking() {
   useEffect(() => {
-    trackEvent("CompleteRegistration");
+    trackEvent("Purchase", { value: 2470, currency: "BRL" });
   }, []);
 
   return null;
