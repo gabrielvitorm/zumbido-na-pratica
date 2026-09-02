@@ -11,6 +11,7 @@ import { GuaranteeBlock } from "@/components/campaign/guarantee-block";
 import { FaqSection } from "@/components/campaign/faq-section";
 import { ModuleCards } from "@/components/campaign/module-cards";
 import { ViewContentTracking } from "./view-content-tracking";
+import { ScrollDepthTracking } from "./scroll-depth-tracking";
 import { campaignConfig, lotes } from "../config";
 import {
   heroContent,
@@ -36,16 +37,28 @@ const fraunces = Fraunces({
 
 export default function VendasPage() {
   const currentLote = getCurrentLote(lotes, new Date());
+  const contentName = "Zumbido na Prática — Turma 4";
+
+  const ctaTrackParams = (position: string) => ({
+    content_name: contentName,
+    content_ids: [currentLote.id],
+    value: currentLote.priceValue,
+    currency: "BRL",
+    cta_position: position,
+  });
 
   return (
     <div className={`${fraunces.variable} [--font-display:var(--font-fraunces),Georgia,serif]`}>
-      <ViewContentTracking />
+      <ViewContentTracking contentName={contentName} contentIds={[currentLote.id]} value={currentLote.priceValue} />
+      <ScrollDepthTracking />
       <StickyBar
         text={currentLote.barText}
         variant={currentLote.barVariant}
         countdownTarget={currentLote.endDate}
-        backgroundClassName="bg-ink"
-        countdownClassName="font-mono text-coral"
+        backgroundClassName={currentLote.barVariant === "urgent" ? "bg-coral-dark" : "bg-ink"}
+        countdownClassName={
+          currentLote.barVariant === "urgent" ? "font-mono font-bold text-white animate-pulse" : "font-mono text-coral"
+        }
       />
 
       {/* Reading block: Hero → Dor → Virada → Para quem → Transformação, one shared
@@ -61,6 +74,7 @@ export default function VendasPage() {
               ctaHref={campaignConfig.checkoutLink}
               loteBadge={heroContent.loteBadge}
               accentClassName="bg-coral text-white hover:bg-coral-dark"
+              ctaTrackParams={ctaTrackParams("hero")}
             />
           </div>
 
@@ -182,6 +196,7 @@ export default function VendasPage() {
           ctaHref={campaignConfig.checkoutLink}
           noteText={currentLote.barText}
           accentClassName="bg-coral text-white hover:bg-coral-dark"
+          ctaTrackParams={ctaTrackParams("price_card")}
         />
       </section>
 
@@ -196,6 +211,7 @@ export default function VendasPage() {
         <CtaLink
           href={campaignConfig.checkoutLink}
           trackAs="InitiateCheckout"
+          trackParams={ctaTrackParams("final_cta")}
           className="mt-8 inline-flex"
           accentClassName="bg-coral text-white hover:bg-coral-dark"
         >
@@ -210,6 +226,7 @@ export default function VendasPage() {
         heroSentinelId="hero-end-sentinel"
         priceSentinelId="price-sentinel"
         accentClassName="bg-coral text-white hover:bg-coral-dark"
+        ctaTrackParams={ctaTrackParams("sticky_mobile")}
       />
     </div>
   );

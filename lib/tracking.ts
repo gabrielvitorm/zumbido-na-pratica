@@ -1,3 +1,5 @@
+import { getStoredAttribution } from "./attribution";
+
 export type TrackingEventName =
   | "PageView"
   | "ViewContent"
@@ -27,11 +29,28 @@ declare global {
 export function trackEvent(name: TrackingEventName, params: Record<string, unknown> = {}): void {
   if (typeof window === "undefined") return;
 
+  const enrichedParams = { ...getStoredAttribution(), ...params };
+
   if (typeof window.fbq === "function") {
-    window.fbq("track", name, params);
+    window.fbq("track", name, enrichedParams);
   }
 
   if (typeof window.gtag === "function") {
-    window.gtag("event", name, params);
+    window.gtag("event", name, enrichedParams);
+  }
+}
+
+/** For non-standard events (e.g. scroll depth) — uses fbq('trackCustom', ...) instead of fbq('track', ...). */
+export function trackCustomEvent(name: string, params: Record<string, unknown> = {}): void {
+  if (typeof window === "undefined") return;
+
+  const enrichedParams = { ...getStoredAttribution(), ...params };
+
+  if (typeof window.fbq === "function") {
+    window.fbq("trackCustom", name, enrichedParams);
+  }
+
+  if (typeof window.gtag === "function") {
+    window.gtag("event", name, enrichedParams);
   }
 }

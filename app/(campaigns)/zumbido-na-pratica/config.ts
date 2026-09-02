@@ -19,16 +19,18 @@ export const campaignConfig: CampaignConfig = {
   salesWhatsappNumber: process.env.SALES_WHATSAPP_NUMBER || "",
 };
 
-// Turma 4 — valor único, sem lotes. Inscrições até 10/09/2026 23:59.
+// Turma 4 — valor único, sem lotes. Inscrições até 06/09/2026 23:59 (turma já começa
+// 05/09, então o prazo cai no meio do primeiro fim de semana de aula — urgência real).
 export const lotes: LotePhase[] = [
   {
     id: "turma4",
     label: "Turma 4",
     price: "R$ 2.470",
+    priceValue: 2470,
     installment: "12x de R$ 255,46",
     startDate: "2026-08-01T00:00:00-03:00",
-    endDate: "2026-09-10T23:59:59-03:00",
-    barText: "Turma 4 — R$ 2.470 (12x de R$ 255,46) — inscrições até 10/09",
-    barVariant: "default",
+    endDate: "2026-09-06T23:59:59-03:00",
+    barText: "Últimos dias — Turma 4 R$ 2.470 (12x de R$ 255,46) — inscrições até 06/09",
+    barVariant: "urgent",
   },
 ];

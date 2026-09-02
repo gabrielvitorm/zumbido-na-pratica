@@ -10,6 +10,7 @@ export interface StickyMobileCtaProps {
   heroSentinelId: string;
   priceSentinelId: string;
   accentClassName?: string;
+  ctaTrackParams?: Record<string, unknown>;
 }
 
 export function StickyMobileCta({
@@ -19,6 +20,7 @@ export function StickyMobileCta({
   heroSentinelId,
   priceSentinelId,
   accentClassName,
+  ctaTrackParams,
 }: StickyMobileCtaProps) {
   const [pastHero, setPastHero] = useState(false);
   const [reachedPrice, setReachedPrice] = useState(false);
@@ -73,6 +75,7 @@ export function StickyMobileCta({
           <CtaLink
             href={ctaHref}
             trackAs="InitiateCheckout"
+            trackParams={ctaTrackParams}
             className="flex-1 justify-center py-2.5 text-sm"
             accentClassName={accentClassName}
           >

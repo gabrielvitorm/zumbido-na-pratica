@@ -24,6 +24,7 @@ CHECKOUT_LINK=https://pay.kiwify.com.br/npNOSXo
 WHATSAPP_GROUP_LINK=https://chat.whatsapp.com/C3qfBzfllShAVYU91k4SVo
 SALES_WHATSAPP_NUMBER=5583996314804
 LEAD_WEBHOOK_URL=
+DATABASE_URL=
 NEXT_PUBLIC_META_PIXEL_ID=
 NEXT_PUBLIC_GA_ID=
 ```
@@ -36,6 +37,35 @@ serviço já basta** — não precisa rebuildar a imagem.
 > home (`/`) e `/privacidade` são páginas estáticas, então nelas o pixel só
 > pega o valor que existia no momento do build. Nas páginas da campanha
 > (`vendas`, `quiz`, `obrigado`, `carrinho`) funciona normalmente em runtime.
+
+## 2.1. Banco de dados (leads)
+
+Os leads do quiz continuam indo pro `LEAD_WEBHOOK_URL`, mas agora também são
+gravados num Postgres (tabela `leads`, com nome, whatsapp, score e os
+`utm_*` de atribuição). Se `DATABASE_URL` não estiver setada, essa parte
+simplesmente não roda — nada quebra.
+
+1. No EasyPanel: **Create Service → Postgres** (template pronto, sem
+   configuração extra). Dê um nome (ex: `zumbido-db`).
+2. Copie a **connection string interna** que o EasyPanel gera pro serviço
+   Postgres (algo como
+   `postgres://postgres:SENHA@zumbido-db:5432/postgres`) e cole em
+   `DATABASE_URL` nas variáveis do serviço da aplicação.
+3. Rode a migração uma vez (cria a tabela `leads`) **da sua máquina local**,
+   com o repo clonado e `npm install` feito, apontando para a connection
+   string **externa/pública** que o EasyPanel expõe pro serviço Postgres
+   (Domains/Connection do serviço Postgres — não é a mesma da interna do
+   passo 2, que só funciona dentro da rede do EasyPanel):
+
+   ```bash
+   DATABASE_URL="postgres://...easypanel-host-externo.../postgres" npm run db:migrate
+   ```
+
+   A imagem de produção (`.next/standalone`) não carrega `scripts/` nem
+   `db/schema.sql` — a migração não roda de dentro do container, só local.
+
+Depois disso, cada envio do quiz grava uma linha em `leads` além de
+encaminhar pro webhook.
 
 ## 3. Domínio e SSL
 

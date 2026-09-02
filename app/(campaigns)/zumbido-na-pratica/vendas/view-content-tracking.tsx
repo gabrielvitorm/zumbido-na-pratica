@@ -3,9 +3,17 @@
 import { useEffect } from "react";
 import { trackEvent } from "@/lib/tracking";
 
-export function ViewContentTracking() {
+export interface ViewContentTrackingProps {
+  contentName: string;
+  contentIds: string[];
+  value: number;
+  currency?: string;
+}
+
+export function ViewContentTracking({ contentName, contentIds, value, currency = "BRL" }: ViewContentTrackingProps) {
   useEffect(() => {
-    trackEvent("ViewContent", { content_name: "Zumbido na Prática — Turma 4", value: 2470, currency: "BRL" });
+    trackEvent("ViewContent", { content_name: contentName, content_ids: contentIds, value, currency });
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- fire once on mount only
   }, []);
 
   return null;

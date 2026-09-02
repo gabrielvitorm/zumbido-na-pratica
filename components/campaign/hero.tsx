@@ -9,6 +9,7 @@ export interface HeroProps {
   ctaHref: string;
   loteBadge: string;
   accentClassName?: string;
+  ctaTrackParams?: Record<string, unknown>;
 }
 
 export function Hero({
@@ -19,6 +20,7 @@ export function Hero({
   ctaHref,
   loteBadge,
   accentClassName,
+  ctaTrackParams,
 }: HeroProps) {
   return (
     <section className="px-4 py-16 lg:py-20">
@@ -31,6 +33,7 @@ export function Hero({
         <CtaLink
           href={ctaHref}
           trackAs="InitiateCheckout"
+          trackParams={ctaTrackParams}
           className="mt-8 w-full justify-center sm:w-auto"
           accentClassName={accentClassName}
         >

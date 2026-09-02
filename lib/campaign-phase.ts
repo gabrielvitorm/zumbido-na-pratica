@@ -2,6 +2,8 @@ export interface LotePhase {
   id: string;
   label: string;
   price: string;
+  /** Numeric BRL value of `price`, for tracking events (Meta Pixel / GA4 `value` param). */
+  priceValue: number;
   installment: string;
   /** ISO date string, inclusive */
   startDate: string;

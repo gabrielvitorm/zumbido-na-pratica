@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { TrackingScripts } from "@/components/tracking-scripts";
+import { AttributionCapture } from "@/components/attribution-capture";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="pt-BR" className={inter.variable}>
       <body className="font-sans antialiased">
         <TrackingScripts />
+        <AttributionCapture />
         {children}
       </body>
     </html>

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { saveLead } from "@/lib/db";
 
 const leadSchema = z.object({
   name: z.string().min(2),
@@ -6,6 +7,11 @@ const leadSchema = z.object({
   consent: z.literal(true),
   scoreBand: z.string(),
   score: z.number(),
+  utm_source: z.string().optional(),
+  utm_medium: z.string().optional(),
+  utm_campaign: z.string().optional(),
+  utm_term: z.string().optional(),
+  utm_content: z.string().optional(),
 });
 
 export async function POST(request: Request): Promise<Response> {
@@ -30,6 +36,22 @@ export async function POST(request: Request): Promise<Response> {
     }
   } else {
     console.warn("LEAD_WEBHOOK_URL is not set — lead was received but not forwarded", parsed.data);
+  }
+
+  try {
+    await saveLead({
+      name: parsed.data.name,
+      whatsapp: parsed.data.whatsapp,
+      score: parsed.data.score,
+      scoreBand: parsed.data.scoreBand,
+      utmSource: parsed.data.utm_source,
+      utmMedium: parsed.data.utm_medium,
+      utmCampaign: parsed.data.utm_campaign,
+      utmTerm: parsed.data.utm_term,
+      utmContent: parsed.data.utm_content,
+    });
+  } catch (error) {
+    console.error("Failed to save lead to database", error);
   }
 
   return Response.json({ ok: true }, { status: 200 });

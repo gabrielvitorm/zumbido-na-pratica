@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { sumScore, getScoreBand } from "@/lib/quiz-scoring";
 import { trackEvent } from "@/lib/tracking";
+import { getStoredAttribution } from "@/lib/attribution";
 import { ProgressBar } from "@/components/campaign/quiz/progress-bar";
 import { ChoiceScreen } from "@/components/campaign/quiz/choice-screen";
 import { ContactFormScreen, type ContactFormValues } from "@/components/campaign/quiz/contact-form-screen";
@@ -92,9 +93,9 @@ export function QuizFlow({ quizResultCtaLink }: QuizFlowProps) {
                 await fetch("/api/lead", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ ...values, score, scoreBand }),
+                  body: JSON.stringify({ ...values, score, scoreBand, ...getStoredAttribution() }),
                 });
-                trackEvent("Lead");
+                trackEvent("Lead", { content_name: "Quiz Zumbido na Prática", scoreBand });
                 setContact(values);
                 setStep({ kind: "result" });
               } catch {

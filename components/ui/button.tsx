@@ -30,6 +30,8 @@ export function Button({ variant = "primary", accentClassName, className = "", .
 export interface CtaLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   variant?: Variant;
   trackAs?: TrackingEventName;
+  /** Extra params merged into the trackAs event (e.g. value, currency, content_name, cta_position). */
+  trackParams?: Record<string, unknown>;
   /** Only applies when `variant="primary"`; silently ignored for `variant="secondary"` (see `variantClasses`). */
   accentClassName?: string;
 }
@@ -39,6 +41,7 @@ export function CtaLink({
   accentClassName,
   className = "",
   trackAs,
+  trackParams,
   onClick,
   ...props
 }: CtaLinkProps) {
@@ -46,7 +49,7 @@ export function CtaLink({
     <a
       className={`${baseClasses} ${variantClasses(variant, accentClassName)} ${className}`}
       onClick={(event) => {
-        if (trackAs) trackEvent(trackAs);
+        if (trackAs) trackEvent(trackAs, trackParams);
         onClick?.(event);
       }}
       {...props}

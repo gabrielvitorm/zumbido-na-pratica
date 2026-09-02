@@ -8,7 +8,7 @@ export const heroContent = {
     "Aprenda o protocolo que eu uso pra tratar zumbido de verdade — Terapia Manual, Laserterapia, Neuromodulação e mais 4 abordagens, direto de quem estuda o cérebro por profissão.",
   socialProofLine: "Mais de 65 profissionais da saúde já passaram por essa formação",
   ctaLabel: "Quero minha vaga na Turma 4",
-  loteBadge: "Inscrições até 10/09",
+  loteBadge: "Últimas vagas — inscrições até 06/09",
 };
 
 export const dorContent = {
