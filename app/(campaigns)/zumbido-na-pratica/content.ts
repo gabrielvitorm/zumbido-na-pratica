@@ -202,51 +202,27 @@ export const ctaFinalContent = {
 
 export const obrigadoContent = {
   confirmation: {
-    title: "Sua vaga na Turma 4 está garantida.",
-    body: "Bem-vinda, {nome}! Fico muito feliz de te ter nessa turma — principalmente sendo essa a primeira depois de um tempo parada.\n\nVocê vai receber um e-mail de confirmação em instantes com os dados de acesso.",
+    title: "Sua inscrição na Black November está confirmada.",
+    body: "Bem-vinda, {nome}! Sua vaga no Zumbido na Prática está garantida.\n\nVocê receberá um e-mail de confirmação em instantes com os dados de acesso.",
   },
   nextStep: {
-    title: "Primeiro passo: entre no grupo da turma",
-    body: "É lá que eu aviso sobre horário, link da aula ao vivo e materiais. Não perca esse passo.",
-    ctaLabel: "Entrar no grupo da Turma 4",
+    title: "Agora, confira seu e-mail",
+    body: "O acesso aos 8 módulos gravados será enviado para o e-mail usado na compra. Guarde esta mensagem para consultar os próximos passos.",
+    ctaLabel: "Voltar para a formação",
+    ctaHref: "/zumbido-na-pratica/vendas",
   },
   timeline: {
-    title: "O que acontece a partir de agora:",
+    title: "O que está incluído na sua Black:",
     items: [
-      { label: "Hoje", description: "você recebe o e-mail com acesso à área de membros" },
-      { label: "Nos próximos dias", description: "materiais de apoio liberados aos poucos" },
-      { label: "05 e 06/09", description: "primeiro encontro ao vivo — Introdução ao Zumbido + minha aula" },
-      { label: "Encontros seguintes", description: "12 e 13/09, 19 e 20/09, 26 e 27/09" },
+      { label: "Acesso imediato", description: "aos 8 módulos gravados, para assistir no seu ritmo" },
+      { label: "Duas lives ao vivo", description: "encontros exclusivos para tirar dúvidas de casos reais" },
+      { label: "Datas das lives", description: "serão divulgadas assim que forem definidas" },
+      { label: "Garantia de 7 dias", description: "para conhecer os primeiros módulos com tranquilidade" },
     ],
-  },
-  upsells: {
-    title: "Antes de você sair: dois complementos que fazem sentido com o que você acabou de garantir",
-    items: [
-      {
-        name: "Mindfulness",
-        body: "Aprofunde as técnicas de regulação da atenção que reduzem o incômodo do zumbido — mentoria à parte do pacote.",
-        price: "R$ 790",
-        priceValue: 790,
-        priceNote: "acesso imediato.",
-        ctaLabel: "Quero adicionar Mindfulness",
-        ctaHref: "https://pay.kiwify.com.br/jqFkpYE",
-      },
-      {
-        name: "Supervisão (SuperZumbido)",
-        body: "5 reuniões mensais de supervisão pra você tirar dúvidas de casos reais comigo, com frequência fixa.",
-        price: "R$ 790",
-        priceValue: 790,
-        priceNote: "cobrança mensal, cancele quando quiser.",
-        ctaLabel: "Quero entrar na Supervisão",
-        ctaHref: "#checkout-pendente-supervisao",
-      },
-    ],
-    buyBothLabel: "Quero os 2",
-    declineLabel: "Não, obrigada, só o combo por enquanto",
   },
   share: {
     title: "Acabou de garantir sua vaga? Conta pra galera:",
-    suggestedText: "Acabei de entrar na Turma 4 do Zumbido na Prática 🎧 #zumbidonapratica",
+    suggestedText: "Acabei de entrar no Zumbido na Prática 🎧 #zumbidonapratica",
     ctaLabel: "Compartilhar nos Stories",
   },
 };
