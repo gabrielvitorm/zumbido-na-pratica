@@ -35,7 +35,7 @@ export function Hero({
     <section className="bg-navy-dark px-4 py-16 text-white lg:py-20">
       <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
         <div className="text-center lg:text-left">
-        <Badge className="mb-4">{loteBadge}</Badge>
+        <Badge className="mb-4 bg-gold/20 text-gold-light">{loteBadge}</Badge>
         <h1 className="font-display text-3xl font-semibold leading-tight text-white lg:text-5xl">
           {headline}
         </h1>
