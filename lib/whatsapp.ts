@@ -19,3 +19,17 @@ export function buildWhatsappCartLink(phoneNumber: string, items: WhatsappCartIt
   const message = ["Olá! Quero comprar:", ...lines, `Total: ${formatPrice(total)}`].join("\n");
   return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 }
+
+export function resolveCartCta(
+  items: WhatsappCartItem[],
+  salesWhatsappNumber: string
+): { href: string; opensWhatsapp: boolean } | null {
+  if (items.length === 0) return null;
+  if (items.length === 1) {
+    return { href: items[0].checkoutLink, opensWhatsapp: false };
+  }
+  return {
+    href: buildWhatsappCartLink(salesWhatsappNumber, items),
+    opensWhatsapp: true,
+  };
+}

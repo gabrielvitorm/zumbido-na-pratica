@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { CtaLink } from "@/components/ui/button";
 import { trackEvent } from "@/lib/tracking";
-import { formatPrice, buildWhatsappCartLink } from "@/lib/whatsapp";
+import { formatPrice, resolveCartCta } from "@/lib/whatsapp";
 import { cartContent, cartItems, type CartItem } from "./carrinho-content";
 
 export interface CartFlowProps {
@@ -31,11 +31,7 @@ export function CartFlow({ salesWhatsappNumber }: CartFlowProps) {
     [selectedIds]
   );
   const total = useMemo(() => selectedItems.reduce((sum, item) => sum + item.price, 0), [selectedItems]);
-  const hasSelection = selectedItems.length > 0;
-
-  const whatsappHref = hasSelection
-    ? buildWhatsappCartLink(salesWhatsappNumber, selectedItems)
-    : undefined;
+  const cta = resolveCartCta(selectedItems, salesWhatsappNumber);
 
   return (
     <div className="min-h-screen bg-cream px-4 py-12">
@@ -71,16 +67,16 @@ export function CartFlow({ salesWhatsappNumber }: CartFlowProps) {
             <span className="text-text-primary">Total selecionado</span>
             <span className="font-display text-2xl font-bold text-ink">{formatPrice(total)}</span>
           </div>
-          {hasSelection ? (
+          {cta ? (
             <CtaLink
-              href={whatsappHref}
+              href={cta.href}
               trackAs="InitiateCheckout"
-              target="_blank"
-              rel="noopener noreferrer"
+              target={cta.opensWhatsapp ? "_blank" : undefined}
+              rel={cta.opensWhatsapp ? "noopener noreferrer" : undefined}
               className="mt-4 w-full justify-center"
               accentClassName="bg-coral text-white hover:bg-coral-dark"
             >
-              {cartContent.ctaLabel}
+              {cta.opensWhatsapp ? cartContent.whatsappCtaLabel : cartContent.checkoutCtaLabel}
             </CtaLink>
           ) : (
             <p className="mt-4 text-center text-sm text-text-secondary">{cartContent.emptyStateText}</p>

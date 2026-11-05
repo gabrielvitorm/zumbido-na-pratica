@@ -8,8 +8,9 @@ export interface CartItem {
 export const cartContent = {
   headline: "Monte seu combo de módulos",
   subheadline:
-    "Escolha os módulos que fazem sentido pra sua prática. Selecione, confira o total e envie pra gente pelo WhatsApp que a gente fecha com você.",
-  ctaLabel: "Enviar seleção pelo WhatsApp",
+    "Escolha os módulos que fazem sentido pra sua prática. Um módulo te leva direto ao checkout; dois ou mais a gente fecha pelo WhatsApp.",
+  checkoutCtaLabel: "Ir para o checkout",
+  whatsappCtaLabel: "Enviar seleção pelo WhatsApp",
   emptyStateText: "Selecione pelo menos um módulo pra continuar.",
 };
 
