@@ -1,4 +1,5 @@
 import type { LotePhase } from "@/lib/campaign-phase";
+import { blackNovemberOffer } from "@/lib/black-november";
 
 export interface CampaignConfig {
   checkoutLink: string;
@@ -10,7 +11,7 @@ export interface CampaignConfig {
 }
 
 export const campaignConfig: CampaignConfig = {
-  checkoutLink: process.env.CHECKOUT_LINK || "#checkout-pendente",
+  checkoutLink: process.env.CHECKOUT_LINK || blackNovemberOffer.checkoutLink,
   whatsappGroupLink: process.env.WHATSAPP_GROUP_LINK || "#whatsapp-pendente",
   // Regra de negócio (ver pagina-captacao-quiz.md): antes de 20/08 apontava pro grupo da
   // aula aberta; já passamos de 20/08, então aponta pro checkout.
@@ -19,18 +20,16 @@ export const campaignConfig: CampaignConfig = {
   salesWhatsappNumber: process.env.SALES_WHATSAPP_NUMBER || "",
 };
 
-// Turma 4 — valor único, sem lotes. Inscrições até 06/09/2026 23:59 (turma já começa
-// 05/09, então o prazo cai no meio do primeiro fim de semana de aula — urgência real).
 export const lotes: LotePhase[] = [
   {
-    id: "turma4",
-    label: "Turma 4",
-    price: "R$ 2.470",
-    priceValue: 2470,
-    installment: "12x de R$ 255,46",
-    startDate: "2026-08-01T00:00:00-03:00",
-    endDate: "2026-09-06T23:59:59-03:00",
-    barText: "Últimos dias — Turma 4 R$ 2.470 (12x de R$ 255,46) — inscrições até 06/09",
+    id: blackNovemberOffer.id,
+    label: blackNovemberOffer.label,
+    price: blackNovemberOffer.price,
+    priceValue: blackNovemberOffer.priceValue,
+    installment: blackNovemberOffer.installment,
+    startDate: blackNovemberOffer.startDate,
+    endDate: blackNovemberOffer.endDate,
+    barText: "BLACK NOVEMBER — Zumbido na Prática por R$ 1.900,00 · só até 30/11",
     barVariant: "urgent",
   },
 ];
