@@ -24,6 +24,13 @@
   --color-success: #2f7a5c;
   --color-warning-bg: #fdf3e4;
   --color-warning-text: #8a5a1c;
+  --color-navy-dark: #05070d;
+  --color-navy: #0a1020;
+  --color-navy-card: #101a2e;
+  --color-gold: #d4af37;
+  --color-gold-light: #f5d77a;
+  --color-slate-muted: #a9b4c6;
+  --color-urgent: #ffb020;
   --font-display: var(--font-fraunces), Georgia, serif;
   --radius-card: 16px;
   --radius-button: 10px;

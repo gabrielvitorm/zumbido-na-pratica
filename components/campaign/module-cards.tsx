@@ -24,18 +24,19 @@ export function ModuleCards({ modules }: ModuleCardsProps) {
           return (
             <div
               key={`module-${module.number}-${module.title}`}
-              className={`flex items-start gap-3 rounded-card border p-4 ${
+              data-module-card={module.title}
+              className={`flex items-start gap-3 rounded-card border p-4 transition-colors ${
                 module.isBonus
                   ? "border-coral-tint bg-coral-tint"
                   : module.isUpsell
                     ? "border-dashed border-border bg-white"
-                    : "border-border bg-white"
+                    : "border-gold/30 bg-navy-card text-white hover:border-gold/70"
               }`}
             >
               {!isBadgeVariant ? (
                 <span
                   className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white ${
-                    module.number === 5 ? "bg-coral" : "bg-ink"
+                    module.number === 5 ? "bg-gold text-navy" : "bg-navy"
                   }`}
                 >
                   {module.number}
@@ -52,10 +53,10 @@ export function ModuleCards({ modules }: ModuleCardsProps) {
                     Disponível como adicional
                   </Badge>
                 ) : null}
-                <p className="font-semibold text-text-primary">
+                <p className={`font-semibold ${isBadgeVariant ? "text-text-primary" : "text-gold-light"}`}>
                   {isBadgeVariant ? module.title : `Módulo ${module.number} — ${module.title}`}
                 </p>
-                <p className="mt-1 text-sm text-text-secondary">{module.description}</p>
+                <p className={`mt-1 text-sm ${isBadgeVariant ? "text-text-secondary" : "text-slate-muted"}`}>{module.description}</p>
               </div>
             </div>
           );
