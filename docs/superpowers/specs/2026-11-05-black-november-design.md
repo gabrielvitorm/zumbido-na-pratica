@@ -2,7 +2,7 @@
 
 ## Design spec
 
-**Status:** proposta para execução
+**Status:** aprovada para execução, com datas das lives pendentes
 
 **Base:** `black-november-copy.md` e `black-november-ui-ux.md`
 
@@ -48,27 +48,28 @@ Readequar a rota existente e evoluir seus componentes.
 
 Essa abordagem preserva o fluxo, os testes e o tracking já existentes, reduz duplicação e permite implementar a nova identidade por tokens de design. A configuração da oferta será extraída para uma fonte única de valores, sem criar ainda um sistema completo para múltiplas campanhas.
 
-## 6. Decisões necessárias antes da implementação
+## 6. Decisões comerciais
 
 Os valores abaixo não podem ser inferidos dos documentos e devem ser preenchidos antes do código de produção:
 
 | Chave | Valor necessário | Impacto |
 |---|---|---|
-| `blackPrice` | Preço à vista da Black | Hero, barra, oferta, CTA mobile e tracking |
-| `anchorPrice` | Preço cheio usado como referência | Economia e ancoragem |
-| `installment` | Parcela e quantidade | Todos os blocos de preço e FAQ |
-| `checkoutLink` | Link/cupom da oferta Black | Todos os CTAs |
+| `blackPrice` | **R$ 1.900,00** | Hero, barra, oferta, CTA mobile e tracking |
+| `anchorPrice` | **R$ 3.000,00** | Economia e ancoragem |
+| `savings` | **R$ 1.100,00** | Blocos de preço e urgência |
+| `installment` | **12x de R$ 196,50** | Todos os blocos de preço e FAQ |
+| `checkoutLink` | **https://pay.kiwify.com.br/UPbHakl** | Todos os CTAs enquanto a Black estiver ativa |
 | `liveOne` / `liveTwo` | Data e horário das lives | Bônus, oferta e FAQ |
 | `accessMonths` | Tempo de acesso | Oferta e FAQ |
 | `includeGroup` | Grupo incluso ou não | Lista da oferta |
 | `includeCertificate` | Certificado incluso ou não | Lista da oferta, se aplicável |
 | `includeMentorship` | Mentoria permanece ou sai | Bônus e FAQ |
-| `expiredBehavior` | Preço normal, lista de espera ou rota regular | Estado após 30/11 |
+| `expiredBehavior` | **normal-price** | Estado após 30/11 |
 | `discountForAlumni` | Regra para ex-alunas | FAQ |
 | `moduleTrainingContent` | Conteúdo confirmado de Treinamento Auditivo e Zumbido | Card do módulo |
 | `suddenDeafnessContent` | Confirmar se Surdez Súbita pertence a algum módulo | Lista de resultados |
 
-Até que esses dados sejam definidos, a implementação deve usar tipos obrigatórios e falhar no build/validação se houver placeholders em produção.
+As datas das duas lives continuam pendentes e devem ser preenchidas antes de publicar a página final. A implementação pode avançar com um estado explícito de configuração incompleta para as lives, mas não deve exibir placeholders para o público.
 
 ## 7. Modelo de dados da campanha
 
@@ -78,12 +79,13 @@ Criar uma configuração única para impedir divergências entre componentes. A 
 interface BlackNovemberOffer {
   id: "black-november-2026";
   label: "Black November";
-  price: string;
-  priceValue: number;
-  anchorPrice: string;
-  anchorPriceValue: number;
-  installment: string;
-  checkoutLink: string;
+  price: "R$ 1.900,00";
+  priceValue: 1900;
+  anchorPrice: "R$ 3.000,00";
+  anchorPriceValue: 3000;
+  savings: "R$ 1.100,00";
+  installment: "12x de R$ 196,50";
+  checkoutLink: "https://pay.kiwify.com.br/UPbHakl";
   startDate: string;
   endDate: string;
   accessMonths: number;
@@ -91,11 +93,11 @@ interface BlackNovemberOffer {
   includesGroup: boolean;
   includesCertificate: boolean;
   includesMentorship: boolean;
-  expiredBehavior: "normal-price" | "waitlist" | "regular-route";
+  expiredBehavior: "normal-price";
 }
 ```
 
-O prazo deve ser representado com offset explícito `-03:00`, e a camada de checkout deve aplicar a mesma regra de encerramento. O front não pode ser a única proteção do preço promocional.
+O prazo deve ser representado com offset explícito `-03:00`, e a camada de checkout deve aplicar a mesma regra de encerramento. Após o prazo, a página deve remover o checkout Black e voltar ao preço normal. O front não pode ser a única proteção do preço promocional.
 
 ## 8. Copy e conteúdo
 

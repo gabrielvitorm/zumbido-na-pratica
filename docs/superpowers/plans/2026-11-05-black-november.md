@@ -24,7 +24,7 @@
 ## Review Focus
 
 - Boundary at the exact campaign deadline: test before, at, during the last day and after expiration in the campaign timezone (Task 1).
-- Missing commercial configuration or unresolved placeholders: fail validation rather than render incomplete production copy (Task 1).
+- Missing commercial configuration or unresolved placeholders: fail validation rather than render incomplete production copy (Task 1); live dates are the only currently pending commercial values and must not be rendered as placeholders.
 - Mobile sticky CTA visibility around hero and offer sentinels: test hidden before hero exit, visible between sections and hidden at the offer (Task 4).
 - FAQ interaction and DOM accessibility: test multiple open items plus `aria-expanded`/`aria-controls` (Task 4).
 - CTA tracking and attribution preservation: test each position and existing stored UTM data (Task 5).
@@ -50,7 +50,7 @@
 - [ ] **Step 5: Run the focused tests** and verify all state/validation cases pass.
 - [ ] **Step 6: Commit** with `feat: add black november campaign configuration`.
 
-**Dependency gate:** The implementation cannot be finalized until the business owner supplies price, anchor price, installment, checkout URL, live dates, access duration, inclusion flags and expired behavior.
+**Dependency gate:** Price, anchor, savings, installment, checkout URL and expired behavior are confirmed: R$ 1.900,00, R$ 3.000,00, R$ 1.100,00, 12x de R$ 196,50, `https://pay.kiwify.com.br/UPbHakl` and `normal-price`. Only the two live dates remain pending, along with any still-unconfirmed access/group/certificate policy.
 
 ### Task 2: Rewrite campaign content and module data
 
