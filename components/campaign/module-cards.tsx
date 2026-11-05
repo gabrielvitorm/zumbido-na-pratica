@@ -14,8 +14,8 @@ export interface ModuleCardsProps {
 
 export function ModuleCards({ modules }: ModuleCardsProps) {
   return (
-    <section className="bg-white px-4 py-12">
-      <h2 className="mb-6 text-center font-display text-2xl font-semibold text-ink">
+    <section className="bg-navy-dark px-4 py-12 text-white">
+      <h2 className="mb-6 text-center font-display text-2xl font-semibold text-gold-light">
         Conteúdo da formação
       </h2>
       <div className="mx-auto flex max-w-2xl flex-col gap-3">

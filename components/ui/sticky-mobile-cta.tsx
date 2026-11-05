@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { CtaLink } from "./button";
+import { shouldShowMobileCta } from "@/lib/mobile-cta";
 
 export interface StickyMobileCtaProps {
   price: string;
@@ -59,7 +60,7 @@ export function StickyMobileCta({
     return () => resizeObserver.disconnect();
   }, []);
 
-  const visible = pastHero && !reachedPrice;
+  const visible = shouldShowMobileCta(pastHero, reachedPrice);
 
   return (
     <>
