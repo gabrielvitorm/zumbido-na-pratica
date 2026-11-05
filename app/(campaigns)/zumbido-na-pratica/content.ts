@@ -1,14 +1,19 @@
 import type { ModuleItem } from "@/components/campaign/module-cards";
 import type { FaqItem } from "@/components/campaign/faq-section";
 import type { QuizOption } from "@/components/campaign/quiz/choice-screen";
+import { blackNovemberOffer } from "@/lib/black-november";
 
 export const heroContent = {
   headline: 'Pare de dizer "não tem cura, vamos aprender a conviver" pro seu paciente com zumbido',
   subheadline:
-    "Aprenda o protocolo que eu uso pra tratar zumbido de verdade — Terapia Manual, Laserterapia, Neuromodulação e mais 4 abordagens, direto de quem estuda o cérebro por profissão.",
+    "O protocolo completo de avaliação e tratamento do zumbido — Fotobiomodulação, Neuromodulação, Estimulação Vagal e mais — em 8 módulos, com 2 lives de tira-dúvidas. Pelo menor preço do ano.",
   socialProofLine: "Mais de 65 profissionais da saúde já passaram por essa formação",
-  ctaLabel: "Quero minha vaga na Turma 4",
-  loteBadge: "Últimas vagas — inscrições até 06/09",
+  ctaLabel: "Quero entrar na Black",
+  loteBadge: "BLACK NOVEMBER · ATÉ 30/11",
+  microcopy: "Garantia de 7 dias · Acesso imediato · Oferta encerra em 30/11",
+  price: blackNovemberOffer.price,
+  anchorPrice: blackNovemberOffer.anchorPrice,
+  installment: blackNovemberOffer.installment,
 };
 
 export const dorContent = {
@@ -26,8 +31,8 @@ export const viradaContent = {
   paragraphs: [
     "O ouvido pode ter sido o gatilho. Mas quem sustenta o zumbido, na maioria dos casos, é a via auditiva central — a parte do cérebro que aprendeu a amplificar um sinal que não deveria estar ali.",
     "É por isso que o exame vem normal. Você não está tratando o órgão errado — você está tratando o sintoma errado.",
-    "Quando eu entendi isso, o tratamento mudou. Parei de tentar \"consertar o ouvido\" e passei a modular o sistema inteiro — com terapia manual, laser, neuromodulação e mindfulness, cada um agindo numa parte diferente desse circuito.",
-    "É esse protocolo que eu ensino no Zumbido na Prática.",
+    "Quando eu entendi isso, o tratamento mudou. Parei de tentar \"consertar o ouvido\" e passei a modular o sistema inteiro — com fotobiomodulação, neuromodulação e estimulação vagal, cada um agindo numa parte diferente desse circuito.",
+    "É esse protocolo que eu ensino no Zumbido na Prática — e, até 30/11, ele está com condição de Black.",
   ],
 };
 
@@ -43,19 +48,20 @@ export const paraQuemContent = {
   rightItems: [
     "Você busca só teoria acadêmica sobre zumbido, sem aplicação clínica",
     "Você não atende pacientes (o curso é 100% voltado à prática)",
-    "Você já domina os 7 protocolos e busca apenas atualização pontual",
+    "Você espera aulas ao vivo toda semana — a Black é formato gravado + 2 lives de dúvidas",
   ],
 };
 
 export const transformacaoContent = {
   title: "Ao final da formação, você vai saber:",
   items: [
-    "Diferenciar os tipos de zumbido e escolher o protocolo certo pra cada caso",
-    "Aplicar Terapia Manual, Laserterapia e Laserpuntura com indicação e contraindicação claras",
-    "Usar Neuromodulação (TDS e vagal) em pacientes que não respondem às abordagens convencionais",
-    'Conduzir um caso de Surdez Súbita com segurança, sem "torcer para o paciente melhorar sozinho"',
-    "Estruturar seu atendimento de zumbido como serviço — como precificar, como montar pacote de sessões",
-    "Continuar sendo acompanhada nos seus primeiros casos reais, depois do curso",
+    "Avaliar o paciente com zumbido e escolher o protocolo certo para cada caso",
+    "Aplicar Fotobiomodulação com indicação, dosagem e contraindicação claras",
+    "Usar Neuromodulação e Neuromodulação Trigeminal em quem não responde às abordagens convencionais",
+    "Aplicar Estimulação Vagal para modular a resposta do sistema nervoso ao zumbido",
+    "Usar Treinamento Auditivo e Motricidade Orofacial dentro do plano terapêutico",
+    "Conduzir o Aconselhamento: o que dizer, como dizer e como isso muda a adesão",
+    "Tirar suas dúvidas direto comigo em 2 lives ao vivo",
   ],
 };
 
@@ -65,68 +71,57 @@ export const transformacaoContent = {
 export const modulosContent: ModuleItem[] = [
   {
     number: 1,
-    title: "Módulo empreendedor + tráfego",
-    description: "Como precificar, montar pacote de sessões e atrair o paciente certo pro seu consultório.",
+    title: "Avaliação",
+    description: "Aprenda a avaliar o paciente com zumbido e escolher o protocolo adequado para cada caso.",
   },
   {
     number: 2,
-    title: "Avaliação",
-    description: "Protocolo completo de avaliação do paciente com zumbido, do zero.",
+    title: "Fotobiomodulação",
+    description: "Entenda indicação, dosagem e contraindicações para aplicar fotobiomodulação com segurança.",
   },
   {
     number: 3,
-    title: "Laserterapia + Laserpuntura",
-    description: "Protocolo de aplicação, dosagem e frequência, combinando laser com pontos específicos de acupuntura para zumbido.",
+    title: "Neuromodulação",
+    description: "Use neuromodulação para ampliar as possibilidades de conduta nos casos que exigem mais recursos.",
   },
   {
     number: 4,
-    title: "Neuromodulação TDCS",
-    description: "Estimulação transcraniana por corrente contínua aplicada ao circuito neural do zumbido.",
+    title: "Neuromodulação Trigeminal",
+    description: "Conheça a abordagem trigeminal e quando ela pode complementar o plano terapêutico.",
   },
   {
     number: 5,
-    title: "Neuromodulação vagal",
-    description: "Estimulação do nervo vago para modular a resposta do sistema nervoso ao zumbido.",
+    title: "Treinamento Auditivo e Zumbido",
+    description: "Organize o treinamento auditivo dentro da conduta e ajude o paciente a lidar melhor com o zumbido.",
   },
   {
     number: 6,
-    title: "Neuromodulação trigeminal",
-    description: "Estimulação trigeminal como abordagem complementar para casos que não respondem só às técnicas anteriores.",
+    title: "Estimulação Vagal",
+    description: "Aprenda como a estimulação vagal pode modular a resposta do sistema nervoso ao zumbido.",
   },
   {
     number: 7,
-    title: "Terapia de motricidade",
+    title: "Motricidade Orofacial e Zumbido",
     description:
-      "Abordagem manual voltada à musculatura e articulações que influenciam o sistema auditivo — nenhum equipamento necessário.",
+      "Inclua motricidade orofacial no plano terapêutico para os casos em que musculatura e articulações participam do quadro.",
   },
   {
     number: 8,
-    title: "Terapia de processamento cognitivo para zumbido",
-    description: "Técnicas de reestruturação cognitiva para reduzir o incômodo do zumbido.",
-  },
-  {
-    number: 9,
-    title: "Mindfulness para zumbido. Como eu faço.",
-    description:
-      "Técnicas de regulação da atenção que reduzem o incômodo do zumbido mesmo quando o som em si não muda.",
-  },
-  {
-    number: 10,
-    title: "Aconselhamento: como eu faço.",
+    title: "Aconselhamento",
     description: "Como conduzir a orientação do paciente com zumbido — o que dizer, como dizer, e como isso muda a adesão ao tratamento.",
-  },
-  {
-    number: 0,
-    title: "Bônus — Mentoria de Primeiros Pacientes (3 meses)",
-    description:
-      "Depois do curso, você traz seus casos reais e eu te ajudo na conduta, por 3 meses. Quem quiser continuar depois, segue por R$ 147/mês — sem cobrança automática, você decide.",
-    isBonus: true,
   },
 ];
 
+export const liveBonusContent = {
+  title: "2 Lives ao vivo de tira-dúvidas",
+  description:
+    "Você assiste, aplica e leva suas dúvidas de caso direto pra mim, ao vivo, em dois encontros exclusivos para quem entrar na Black.",
+  sessions: blackNovemberOffer.liveSessions,
+};
+
 export const quemEnsinaContent = {
   name: "Ana Luiza Caldas",
-  bio: "Estudo o cérebro há 10 anos, com foco em como o sistema nervoso processa e mantém sintomas como o zumbido. Já formei mais de 65 profissionais da saúde através do Zumbido na Prática, em 3 turmas anteriores.\n\nEsta é a primeira turma depois de um tempo parada — usei essa pausa pra reformular o curso inteiro e trazer o que há de mais atual em neuromodulação para o tratamento do zumbido.",
+  bio: "Estudo o cérebro há 10 anos, com foco em como o sistema nervoso processa e mantém sintomas como o zumbido. Já formei mais de 65 profissionais da saúde através do Zumbido na Prática, em 3 turmas anteriores.\n\nEsta é uma condição especial de Black November, com o curso reformulado e atualizado em neuromodulação.",
   photoSrc: undefined as string | undefined,
 };
 
@@ -141,59 +136,68 @@ export const provaSocialContent = {
 export const ofertaContent = {
   title: "O que está incluso:",
   items: [
-    "10 módulos completos, 100% ao vivo (R$ 5.500 avulso — R$ 550 cada módulo individual)",
-    "Gravação de todas as aulas por 12 meses",
-    "Mentoria de Primeiros Pacientes — 3 meses inclusos",
-    "Acesso ao grupo exclusivo da turma",
+    "8 módulos completos, com acesso imediato às aulas gravadas",
+    "2 lives ao vivo de tira-dúvidas",
+    `Acesso por ${blackNovemberOffer.accessMonths} meses às aulas`,
+    "Garantia de 7 dias",
   ],
-  closingLine: "Tudo isso por R$ 2.470",
+  anchorPrice: blackNovemberOffer.anchorPrice,
+  price: blackNovemberOffer.price,
+  installment: blackNovemberOffer.installment,
+  savings: blackNovemberOffer.savings,
+  closingLine: "Só até 30/11",
+  ctaLabel: "Garantir minha vaga na Black",
 };
 
 export const garantiaContent = {
-  title: "Garantia de 7 dias após o primeiro encontro",
+  title: "Garantia de 7 dias a partir da compra",
   description:
-    "Você assiste ao primeiro fim de semana de aula (05 e 06/09) inteiro. Se não for pra você, é só pedir reembolso até 12/09 — sem burocracia.",
+    "Entre, assista aos primeiros módulos e, se não for pra você, é só pedir reembolso dentro de 7 dias — sem burocracia.",
 };
 
 export const faqContent: FaqItem[] = [
   {
     question: "O curso é gravado ou ao vivo?",
-    answer:
-      "100% ao vivo, nos fins de semana: 05 e 06/09, 12 e 13/09, 19 e 20/09, 26 e 27/09. Toda aula fica gravada e disponível por 12 meses.",
+    answer: "Os 8 módulos são gravados, com acesso imediato e ritmo livre. A Black também inclui 2 lives ao vivo de tira-dúvidas.",
   },
   {
-    question: "Preciso ter equipamento de laser?",
-    answer:
-      "Não para todos os módulos. Terapia Manual, Mindfulness e Estimulação Trigeminal não pedem equipamento. Laser e Neuromodulação, sim — e o Módulo Empresarial te ajuda a planejar esse investimento.",
+    question: "Preciso ter equipamento de fotobiomodulação?",
+    answer: "Não para todos os módulos. A necessidade de equipamento depende do protocolo e do caso; a formação explica indicações, dosagem e contraindicações.",
   },
   {
     question: "Não sei se dá tempo na minha agenda.",
-    answer: "São 4 fins de semana, e você não precisa assistir tudo ao vivo — a gravação fica 1 ano no ar.",
+    answer: `O conteúdo é gravado, fica disponível por ${blackNovemberOffer.accessMonths} meses e pode ser assistido no seu ritmo. As duas lives terão datas divulgadas assim que forem definidas.`,
   },
   {
-    question: "Como funciona a Mentoria de Primeiros Pacientes?",
-    answer:
-      "Você traz seus casos reais e eu ajudo na conduta, por 3 meses inclusos no pacote. Depois, quem quiser continuar segue por R$ 147/mês — você decide, sem cobrança automática.",
+    question: "Como funcionam as lives de tira-dúvidas?",
+    answer: "São 2 encontros ao vivo exclusivos para quem entrar na Black. Você assiste, aplica e leva suas dúvidas de caso direto pra mim.",
   },
   {
     question: "Posso comprar só um módulo?",
-    answer:
-      "Sim, os módulos também são vendidos avulsos, a R$ 550 cada. Mas o pacote completo (R$ 2.470) sai mais em conta se você quer o protocolo inteiro.",
+    answer: "A condição Black é para o pacote completo com os 8 módulos e as 2 lives de tira-dúvidas.",
   },
   {
     question: "Tem parcelamento?",
-    answer: "Sim, em até 12x.",
+    answer: `Sim. Você pode pagar em ${blackNovemberOffer.installment}.`,
   },
   {
     question: "E se eu não gostar?",
-    answer: "Você tem garantia de 7 dias após o primeiro encontro.",
+    answer: garantiaContent.description,
+  },
+  {
+    question: "Até quando vale a Black?",
+    answer: "Até 30/11 às 23:59, no horário de Fortaleza. Depois disso, o preço volta ao normal.",
+  },
+  {
+    question: "O desconto vale para quem já fez turmas anteriores?",
+    answer: "A condição para alunas anteriores deve ser confirmada antes da publicação da campanha.",
   },
 ];
 
 export const ctaFinalContent = {
-  title: "A Turma 4 do Zumbido na Prática está aberta.",
-  subtitle: "Comece 05 de setembro com o protocolo que muda o que você faz na segunda-feira de manhã.",
-  ctaLabel: "Quero minha vaga",
+  title: "A Black November do Zumbido na Prática termina em 30/11.",
+  subtitle: "Depois disso, o preço volta ao normal — e as lives de tira-dúvidas saem do pacote.",
+  ctaLabel: "Garantir minha vaga na Black",
 };
 
 export const obrigadoContent = {
