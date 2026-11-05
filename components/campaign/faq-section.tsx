@@ -1,3 +1,5 @@
+"use client";
+
 import { Accordion, type AccordionItem } from "@/components/ui/accordion";
 import { trackCampaignEvent } from "@/lib/tracking";
 
