@@ -2,6 +2,7 @@ import { CtaLink } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PriceBlock } from "./price-block";
 import type { BlackNovemberOffer } from "@/lib/black-november";
+import type { BlackNovemberEventName } from "@/lib/tracking";
 
 export interface HeroProps {
   headline: string;
@@ -14,6 +15,7 @@ export interface HeroProps {
   ctaTrackParams?: Record<string, unknown>;
   offer?: BlackNovemberOffer;
   microcopy?: string;
+  ctaCustomEventName?: BlackNovemberEventName;
 }
 
 export function Hero({
@@ -27,6 +29,7 @@ export function Hero({
   ctaTrackParams,
   offer,
   microcopy,
+  ctaCustomEventName,
 }: HeroProps) {
   return (
     <section className="bg-navy-dark px-4 py-16 text-white lg:py-20">
@@ -39,7 +42,7 @@ export function Hero({
         <p className="mt-4 text-lg text-slate-muted">{subheadline}</p>
         {offer ? (
           <div className="mt-7 lg:hidden">
-            <PriceBlock offer={offer} ctaHref={ctaHref} ctaLabel={ctaLabel} ctaTrackParams={ctaTrackParams} />
+            <PriceBlock offer={offer} ctaHref={ctaHref} ctaLabel={ctaLabel} ctaTrackParams={ctaTrackParams} ctaCustomEventName={ctaCustomEventName} />
           </div>
         ) : (
           <CtaLink
@@ -57,7 +60,7 @@ export function Hero({
         </div>
         {offer ? (
           <div className="hidden lg:block">
-            <PriceBlock offer={offer} ctaHref={ctaHref} ctaLabel={ctaLabel} ctaTrackParams={ctaTrackParams} />
+            <PriceBlock offer={offer} ctaHref={ctaHref} ctaLabel={ctaLabel} ctaTrackParams={ctaTrackParams} ctaCustomEventName={ctaCustomEventName} />
           </div>
         ) : null}
       </div>

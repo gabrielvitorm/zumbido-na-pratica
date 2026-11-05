@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { trackCustomEvent } from "@/lib/tracking";
+import { trackCampaignEvent } from "@/lib/tracking";
 
-const MILESTONES = [25, 50, 75, 90] as const;
+const MILESTONES = [25, 50, 75, 100] as const;
 
 export function ScrollDepthTracking() {
   const fired = useRef<Set<number>>(new Set());
@@ -19,7 +19,7 @@ export function ScrollDepthTracking() {
       for (const milestone of MILESTONES) {
         if (percent >= milestone && !fired.current.has(milestone)) {
           fired.current.add(milestone);
-          trackCustomEvent("ScrollDepth", { percent: milestone, page: "vendas" });
+          trackCampaignEvent("scroll_depth", { percent: milestone, page: "vendas" });
         }
       }
     }

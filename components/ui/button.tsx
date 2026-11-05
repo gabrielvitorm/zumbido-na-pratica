@@ -1,7 +1,7 @@
 "use client";
 
 import type { ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
-import { trackEvent, type TrackingEventName } from "@/lib/tracking";
+import { trackCampaignEvent, trackEvent, type BlackNovemberEventName, type TrackingEventName } from "@/lib/tracking";
 
 type Variant = "primary" | "secondary";
 
@@ -32,6 +32,7 @@ export interface CtaLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   trackAs?: TrackingEventName;
   /** Extra params merged into the trackAs event (e.g. value, currency, content_name, cta_position). */
   trackParams?: Record<string, unknown>;
+  trackCustomAs?: BlackNovemberEventName;
   /** Only applies when `variant="primary"`; silently ignored for `variant="secondary"` (see `variantClasses`). */
   accentClassName?: string;
 }
@@ -42,6 +43,7 @@ export function CtaLink({
   className = "",
   trackAs,
   trackParams,
+  trackCustomAs,
   onClick,
   ...props
 }: CtaLinkProps) {
@@ -50,6 +52,7 @@ export function CtaLink({
       className={`${baseClasses} ${variantClasses(variant, accentClassName)} ${className}`}
       onClick={(event) => {
         if (trackAs) trackEvent(trackAs, trackParams);
+        if (trackCustomAs) trackCampaignEvent(trackCustomAs, trackParams);
         onClick?.(event);
       }}
       {...props}

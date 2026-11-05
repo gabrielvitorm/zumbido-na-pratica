@@ -14,6 +14,7 @@ export interface AccordionProps {
   defaultOpenId?: string;
   activeBorderClassName?: string;
   allowMultiple?: boolean;
+  onToggle?: (id: string, open: boolean) => void;
 }
 
 export function Accordion({
@@ -21,6 +22,7 @@ export function Accordion({
   defaultOpenId,
   activeBorderClassName = "border-l-brand-accent",
   allowMultiple = false,
+  onToggle,
 }: AccordionProps) {
   const [openIds, setOpenIds] = useState<string[]>(defaultOpenId ? [defaultOpenId] : []);
 
@@ -38,6 +40,7 @@ export function Accordion({
               type="button"
               onClick={() =>
                 setOpenIds((current) => {
+                  onToggle?.(item.id, !isOpen);
                   if (isOpen) return current.filter((id) => id !== item.id);
                   return allowMultiple ? [...current, item.id] : [item.id];
                 })

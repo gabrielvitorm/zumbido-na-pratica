@@ -1,16 +1,18 @@
 import { CtaLink } from "@/components/ui/button";
 import type { BlackNovemberOffer } from "@/lib/black-november";
 import { getBlackNovemberPriceSummary } from "@/lib/black-november-presentation";
+import type { BlackNovemberEventName } from "@/lib/tracking";
 
 export interface PriceBlockProps {
   offer: BlackNovemberOffer;
   ctaHref: string;
   ctaLabel: string;
   ctaTrackParams?: Record<string, unknown>;
+  ctaCustomEventName?: BlackNovemberEventName;
   compact?: boolean;
 }
 
-export function PriceBlock({ offer, ctaHref, ctaLabel, ctaTrackParams, compact = false }: PriceBlockProps) {
+export function PriceBlock({ offer, ctaHref, ctaLabel, ctaTrackParams, ctaCustomEventName, compact = false }: PriceBlockProps) {
   const summary = getBlackNovemberPriceSummary(offer);
   return (
     <div className={`rounded-2xl border border-gold/40 bg-navy-card p-6 text-center text-white shadow-[0_0_32px_rgba(212,175,55,0.12)] ${compact ? "p-4" : ""}`}>
@@ -25,6 +27,7 @@ export function PriceBlock({ offer, ctaHref, ctaLabel, ctaTrackParams, compact =
         href={ctaHref}
         trackAs="InitiateCheckout"
         trackParams={ctaTrackParams}
+        trackCustomAs={ctaCustomEventName}
         className="mt-5 min-h-11 w-full"
         accentClassName="bg-gold-light text-navy hover:bg-gold"
       >

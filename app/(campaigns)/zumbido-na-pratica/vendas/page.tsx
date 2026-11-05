@@ -65,7 +65,7 @@ export default function VendasPage() {
 
   return (
     <div className={`${fraunces.variable} [--font-display:var(--font-fraunces),Georgia,serif]`}>
-      <ViewContentTracking contentName={contentName} contentIds={[blackNovemberOffer.id]} value={blackNovemberOffer.priceValue} />
+      <ViewContentTracking contentName={contentName} contentIds={[blackNovemberOffer.id]} value={blackNovemberOffer.priceValue} campaignId={blackNovemberOffer.id} />
       <ScrollDepthTracking />
       <StickyBar
         text={urgencyText}
@@ -94,6 +94,7 @@ export default function VendasPage() {
               microcopy={heroContent.microcopy}
               accentClassName="bg-gold-light text-navy hover:bg-gold"
               ctaTrackParams={ctaTrackParams("hero")}
+              ctaCustomEventName="click_cta_hero"
             />
           </div>
 
@@ -135,6 +136,11 @@ export default function VendasPage() {
       </div>
 
       <ModuleCards modules={modulosContent} />
+      <section className="bg-navy-dark px-4 py-8 text-center">
+        <CtaLink href={checkoutHref} trackAs="InitiateCheckout" trackCustomAs="click_cta_modulos" trackParams={ctaTrackParams("modulos")} className="inline-flex" accentClassName="bg-gold-light text-navy hover:bg-gold">
+          Garantir minha vaga na Black
+        </CtaLink>
+      </section>
       <LiveBonus sessions={liveBonusContent.sessions} />
 
       <section className="bg-navy px-4 py-12 text-center text-white">
@@ -146,12 +152,12 @@ export default function VendasPage() {
         <Card className="mx-auto max-w-xl border border-gold/30 bg-navy-card text-white">
           <h2 className="mb-4 font-display text-xl font-semibold text-gold-light">{ofertaContent.title}</h2>
           <ul className="space-y-2 text-slate-muted">{ofertaContent.items.map((item) => <li key={item} className="flex items-start gap-2"><Check className="mt-0.5 h-5 w-5 shrink-0 text-gold" /><span>{item}</span></li>)}</ul>
-          <div className="mt-6"><PriceBlock offer={blackNovemberOffer} ctaHref={checkoutHref} ctaLabel={ofertaContent.ctaLabel} ctaTrackParams={ctaTrackParams("oferta")} compact /></div>
+          <div className="mt-6"><PriceBlock offer={blackNovemberOffer} ctaHref={checkoutHref} ctaLabel={ofertaContent.ctaLabel} ctaTrackParams={ctaTrackParams("oferta")} ctaCustomEventName="click_cta_oferta" compact /></div>
         </Card>
       </section>
 
       <section id="price-sentinel" className="bg-navy px-4 py-12">
-        <PriceBlock offer={blackNovemberOffer} ctaHref={checkoutHref} ctaLabel={ofertaContent.ctaLabel} ctaTrackParams={ctaTrackParams("price_card")} />
+        <PriceBlock offer={blackNovemberOffer} ctaHref={checkoutHref} ctaLabel={ofertaContent.ctaLabel} ctaTrackParams={ctaTrackParams("oferta")} ctaCustomEventName="click_cta_oferta" />
       </section>
 
       <GuaranteeBlock title={garantiaContent.title} description={garantiaContent.description} />
@@ -160,10 +166,10 @@ export default function VendasPage() {
       <section className="bg-navy-dark px-4 py-16 text-center text-white">
         <h2 className="font-display text-2xl font-semibold sm:text-3xl">{ctaFinalContent.title}</h2>
         <p className="mt-4 text-slate-muted">{ctaFinalContent.subtitle}</p>
-        <CtaLink href={checkoutHref} trackAs="InitiateCheckout" trackParams={ctaTrackParams("final")} className="mt-8 inline-flex" accentClassName="bg-gold-light text-navy hover:bg-gold">{ctaFinalContent.ctaLabel}</CtaLink>
+        <CtaLink href={checkoutHref} trackAs="InitiateCheckout" trackCustomAs="click_cta_final" trackParams={ctaTrackParams("final")} className="mt-8 inline-flex" accentClassName="bg-gold-light text-navy hover:bg-gold">{ctaFinalContent.ctaLabel}</CtaLink>
       </section>
 
-      <StickyMobileCta price={blackNovemberOffer.price} ctaLabel="Entrar na Black" ctaHref={checkoutHref} heroSentinelId="hero-end-sentinel" priceSentinelId="price-sentinel" accentClassName="bg-gold-light text-navy hover:bg-gold" ctaTrackParams={ctaTrackParams("sticky_mobile")} />
+      <StickyMobileCta price={blackNovemberOffer.price} ctaLabel="Entrar na Black" ctaHref={checkoutHref} heroSentinelId="hero-end-sentinel" priceSentinelId="price-sentinel" accentClassName="bg-gold-light text-navy hover:bg-gold" ctaTrackParams={ctaTrackParams("sticky_mobile")} ctaCustomEventName="click_cta_sticky_mobile" />
     </div>
   );
 }

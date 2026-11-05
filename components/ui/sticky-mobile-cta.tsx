@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { CtaLink } from "./button";
 import { shouldShowMobileCta } from "@/lib/mobile-cta";
+import type { BlackNovemberEventName } from "@/lib/tracking";
 
 export interface StickyMobileCtaProps {
   price: string;
@@ -12,6 +13,7 @@ export interface StickyMobileCtaProps {
   priceSentinelId: string;
   accentClassName?: string;
   ctaTrackParams?: Record<string, unknown>;
+  ctaCustomEventName?: BlackNovemberEventName;
 }
 
 export function StickyMobileCta({
@@ -22,6 +24,7 @@ export function StickyMobileCta({
   priceSentinelId,
   accentClassName,
   ctaTrackParams,
+  ctaCustomEventName,
 }: StickyMobileCtaProps) {
   const [pastHero, setPastHero] = useState(false);
   const [reachedPrice, setReachedPrice] = useState(false);
@@ -77,6 +80,7 @@ export function StickyMobileCta({
             href={ctaHref}
             trackAs="InitiateCheckout"
             trackParams={ctaTrackParams}
+            trackCustomAs={ctaCustomEventName}
             className="flex-1 justify-center py-2.5 text-sm"
             accentClassName={accentClassName}
           >

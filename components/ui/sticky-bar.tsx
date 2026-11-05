@@ -1,6 +1,7 @@
 import { CountdownTimer } from "./countdown-timer";
 import { CtaLink } from "./button";
 import type { CampaignState } from "@/lib/black-november";
+import type { BlackNovemberEventName } from "@/lib/tracking";
 
 export interface StickyBarProps {
   text: string;
@@ -13,6 +14,7 @@ export interface StickyBarProps {
   ctaHref?: string;
   ctaLabel?: string;
   ctaTrackParams?: Record<string, unknown>;
+  ctaCustomEventName?: BlackNovemberEventName;
 }
 
 export function StickyBar({
@@ -26,6 +28,7 @@ export function StickyBar({
   ctaHref,
   ctaLabel,
   ctaTrackParams,
+  ctaCustomEventName,
 }: StickyBarProps) {
   const defaultBackgroundClass = variant === "urgent" ? "bg-brand-alert" : "bg-brand-primary";
 
@@ -45,6 +48,7 @@ export function StickyBar({
           href={ctaHref}
           trackAs="InitiateCheckout"
           trackParams={ctaTrackParams}
+          trackCustomAs={ctaCustomEventName}
           className="min-h-11 px-4 py-2 text-sm"
           accentClassName="bg-gold-light text-navy hover:bg-gold"
         >

@@ -9,6 +9,18 @@ export type TrackingEventName =
   | "CompleteRegistration"
   | "Purchase";
 
+export type BlackNovemberEventName =
+  | "view_black_page"
+  | "click_cta_hero"
+  | "click_cta_modulos"
+  | "click_cta_oferta"
+  | "click_cta_final"
+  | "click_cta_sticky_mobile"
+  | "faq_open"
+  | "scroll_depth";
+
+export type BlackNovemberCtaPosition = "hero" | "modulos" | "oferta" | "final" | "sticky_mobile";
+
 export function resolveTrackingConfig(env: {
   metaPixelId?: string;
   gaId?: string;
@@ -53,4 +65,18 @@ export function trackCustomEvent(name: string, params: Record<string, unknown> =
   if (typeof window.gtag === "function") {
     window.gtag("event", name, enrichedParams);
   }
+}
+
+export function buildBlackNovemberTrackingParams(
+  position: BlackNovemberCtaPosition,
+  params: Record<string, unknown> = {}
+): Record<string, unknown> {
+  return { campaign: "black_november", cta_position: position, ...params };
+}
+
+export function trackCampaignEvent(
+  name: BlackNovemberEventName,
+  params: Record<string, unknown> = {}
+): void {
+  trackCustomEvent(name, { campaign: "black_november", ...params });
 }
