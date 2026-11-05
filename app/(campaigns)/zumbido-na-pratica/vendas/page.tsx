@@ -1,4 +1,5 @@
 import { Fraunces } from "next/font/google";
+import type { Metadata } from "next";
 import { Check, X } from "lucide-react";
 import { getBlackNovemberState, blackNovemberOffer } from "@/lib/black-november";
 import { StickyBar } from "@/components/ui/sticky-bar";
@@ -30,6 +31,16 @@ import {
 } from "../content";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Black November | Zumbido na Prática",
+  description: "Formação prática em avaliação e protocolos para profissionais da saúde que atendem pacientes com zumbido.",
+  openGraph: {
+    title: "Black November | Zumbido na Prática",
+    description: "8 módulos, 2 lives de tira-dúvidas e condição especial até 30/11.",
+    type: "website",
+  },
+};
 
 const fraunces = Fraunces({
   subsets: ["latin"],
